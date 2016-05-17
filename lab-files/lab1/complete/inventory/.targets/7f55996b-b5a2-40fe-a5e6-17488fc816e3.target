@@ -1,0 +1,29 @@
+type: bluemix
+server:
+  displayName: US South
+  name: us-south
+  host: us.apiconnect.ibmcloud.com
+org:
+  url: 'https://us.apiconnect.ibmcloud.com/v1/orgs/56fe7a580cf2765a58287786'
+  id: 56fe7a580cf2765a58287786
+  name: gangchenusibmcom-dev
+  status: active
+  orgType: apiProvider
+  displayName: gangchen@us.ibm.com (dev)
+  externalOrgId: 310958f9-1ad4-493f-bfe8-ec7728f51cee
+  externalInviteOverride: 'https://new-console.ng.bluemix.net/apis/catalog/invitation'
+  externalSpaceId: 310958f9-1ad4-493f-bfe8-ec7728f51cee
+  externalNativeOrgId: ccf8ef2a-7d86-42c3-a2eb-0d822adcc710
+  advPortalOverride: true
+  extUaaAuthenticated: false
+  requiresSSLClientCertCheck: false
+catalog:
+  id: 57361a600cf2ce34b52ca41f
+  shortName: inventory-catalog
+  name: inventory-catalog
+  sandbox: false
+app:
+  new: true
+  name: inventory-loopback-app
+id: 7f55996b-b5a2-40fe-a5e6-17488fc816e3
+target: 1.0.0
