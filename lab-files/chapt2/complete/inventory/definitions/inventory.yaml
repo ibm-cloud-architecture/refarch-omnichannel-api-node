@@ -467,7 +467,6 @@ info:
   version: 1.0.0
   title: inventory
 schemes:
-  - http
   - https
 basePath: /api
 consumes:
