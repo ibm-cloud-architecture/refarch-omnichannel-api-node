@@ -30,8 +30,8 @@ router.get('/', function (req, res) {
 
 function setGetItemsOptions(req, res) {
   var query = req.query;
-  
-  var items_url = api_url.stringify({
+
+/*  var items_url = api_url.stringify({
     protocol: _apiServer.protocol,
     host: _apiServer.host,
     org: _apiServerOrg,
@@ -39,6 +39,9 @@ function setGetItemsOptions(req, res) {
     api: _apis.inventory.base_path,
     operation: "items"
   });
+  */
+
+  var items_url = "https://api.us.apiconnect.ibmcloud.com/aseriyusibmcom-redbooks/inventory-catalog/api/items"
 
   var options = {
     method: 'GET',

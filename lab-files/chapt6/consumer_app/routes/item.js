@@ -40,7 +40,7 @@ router.post('/submitReview', function (req, res) {
 function setGetItemOptions(req, res) {
   var params = req.params;
 
-  var item_url = api_url.stringify({
+/*  var item_url = api_url.stringify({
     protocol: _apiServer.protocol,
     host: _apiServer.host,
     org: _apiServerOrg,
@@ -48,6 +48,9 @@ function setGetItemOptions(req, res) {
     api: _apis.inventory.base_path,
     operation: "items/" + params.id
   });
+  */
+
+  var item_url = "https://api.us.apiconnect.ibmcloud.com/aseriyusibmcom-redbooks/inventory-catalog/api/items/" + params.id
 
   var getItem_options = {
     method: 'GET',
@@ -59,7 +62,7 @@ function setGetItemOptions(req, res) {
   if (_apis.inventory.require.indexOf("client_id") != -1) getItem_options.headers["X-IBM-Client-Id"] = _myApp.client_id;
   if (_apis.inventory.require.indexOf("client_secret") != -1) getItem_options.headers["X-IBM-Client-Secret"] = _myApp.client_secret;
 
-  var reviews_url = api_url.stringify({
+  /*var reviews_url = api_url.stringify({
     protocol: _apiServer.protocol,
     host: _apiServer.host,
     org: _apiServerOrg,
@@ -67,6 +70,9 @@ function setGetItemOptions(req, res) {
     api: _apis.inventory.base_path,
     operation: "items/" + params.id + "/reviews"
   });
+  */
+
+  var reviews_url = "https://api.us.apiconnect.ibmcloud.com/aseriyusibmcom-redbooks/inventory-catalog/api/items/" + params.id + "/reviews"
 
   var getItemReviews_options = {
     method: 'GET',
@@ -79,7 +85,7 @@ function setGetItemOptions(req, res) {
   if (_apis.inventory.require.indexOf("client_secret") != -1) getItemReviews_options.headers["X-IBM-Client-Secret"] = _myApp.client_secret;
 
   return new Promise(function (fulfill) {
-    
+
     // Get OAuth Access Token, if needed
     if (_apis.inventory.require.indexOf("oauth") != -1) {
 
@@ -120,7 +126,7 @@ function setNewReviewOptions(req, res) {
   if (form_body.email !== '') reqBody.reviewer_email = form_body.email;
   if (form_body.comment !== '') reqBody.comment = form_body.comment;
 
-  var reviews_url = api_url.stringify({
+/*  var reviews_url = api_url.stringify({
     protocol: _apiServer.protocol,
     host: _apiServer.host,
     org: _apiServerOrg,
@@ -128,6 +134,10 @@ function setNewReviewOptions(req, res) {
     api: _apis.inventory.base_path,
     operation: "items/" + form_body.itemId + "/reviews"
   });
+  */
+
+  var reviews_url = "https://api.us.apiconnect.ibmcloud.com/aseriyusibmcom-redbooks/inventory-catalog/api/items/" + params.id + "/reviews"
+
 
   var options = {
     method: 'POST',

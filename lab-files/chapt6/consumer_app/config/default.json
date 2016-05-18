@@ -1,11 +1,11 @@
 {
   "Application": {
-    "client_id": "",
+    "client_id": "b3540cab-ac31-47d4-9c85-8da9325c15c6",
     "client_secret": ""
   },
   "API-Server": {
     "protocol": "https",
-    "host": "api.think.ibm",
+    "host": "api.us.apiconnect.ibmcloud.com/aseriyusibmcom-redbooks",
     "org": "sales",
     "catalog": "sb"
   },
@@ -13,9 +13,7 @@
     "inventory": {
       "base_path": "/inventory",
       "require": [
-        "client_id",
-        "client_secret",
-        "oauth"
+        "client_id"
       ]
     },
     "financing": {

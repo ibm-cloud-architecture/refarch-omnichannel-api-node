@@ -507,5 +507,10 @@ x-ibm-configuration:
   assembly:
     execute:
       - invoke:
-          target-url: 'https://apiconnect-f789f42e-b21c-468f-a738-4906df07280c.aseriyusibmcom-redbooks.apic.mybluemix.net/api/items/1'
+          target-url: $(lphost)$(request.path)
           tls-profile: 'client:Loopback-client'
+  properties:
+    new-property-1:
+      value: 'https://apiconnect-f789f42e-b21c-468f-a738-4906df07280c.aseriyusibmcom-redbooks.apic.mybluemix.net'
+      description: ''
+      encoded: false
