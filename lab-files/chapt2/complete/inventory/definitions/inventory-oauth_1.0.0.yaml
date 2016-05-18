@@ -132,11 +132,19 @@ paths:
 
 
 
+
+
+
+
         The table below indicates the required parameters for each specific
         grant_type options.
 
         Empty cells indicate a parameter is ignored for that specific grant
         type.
+
+
+
+
 
 
 
@@ -149,11 +157,23 @@ paths:
 
 
 
+
+
+
+
           their client_id and client_secret information as a formData parameter.
 
 
 
+
+
+
+
         - Public clients should send their client_id as formData parameter.
+
+
+
+
 
 
 
@@ -187,6 +207,10 @@ paths:
 
         | refresh_token        |            |                    |             |
         required      |
+
+
+
+
 
 
 
@@ -305,3 +329,4 @@ definitions:
         type: string
       refresh_token:
         type: string
+host: $(catalog.host)

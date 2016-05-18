@@ -491,9 +491,6 @@ securityDefinitions:
     type: apiKey
 security:
   - clientIdHeader: []
-    clientSecretHeader: []
-    oauth:
-      - inventory
 x-ibm-configuration:
   testable: true
   enforced: true
@@ -510,5 +507,5 @@ x-ibm-configuration:
   assembly:
     execute:
       - invoke:
-          target-url: 'https://apiconnect-02ab5280-bd4b-4e41-ae18-c35ab4fbc389.gangchenusibmcom-dev.apic.mybluemix.net'
+          target-url: 'https://apiconnect-f789f42e-b21c-468f-a738-4906df07280c.aseriyusibmcom-redbooks.apic.mybluemix.net/api/items/1'
           tls-profile: 'client:Loopback-client'
