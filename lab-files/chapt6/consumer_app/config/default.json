@@ -1,19 +1,21 @@
 {
   "Application": {
     "client_id": "b3540cab-ac31-47d4-9c85-8da9325c15c6",
-    "client_secret": ""
+    "client_secret": "X4jP5dL4vO1fF3fN8lY4jH6vY0uM7jE7sH5wJ2uW3nD6aU8sV1"
   },
   "API-Server": {
     "protocol": "https",
-    "host": "api.us.apiconnect.ibmcloud.com/aseriyusibmcom-redbooks",
-    "org": "sales",
-    "catalog": "sb"
+    "host": "api.us.apiconnect.ibmcloud.com",
+    "org": "aseriyusibmcom-redbooks",
+    "catalog": "inventory-catalog"
   },
   "APIs": {
     "inventory": {
       "base_path": "/inventory",
       "require": [
-        "client_id"
+        "client_id",
+        "client_secret",
+        "oauth"
       ]
     },
     "financing": {
@@ -40,7 +42,7 @@
       "scopes": [
         "inventory"
       ],
-      "redirect_url": ""
+      "redirect_url": "http://localhost"
     }
   }
 }

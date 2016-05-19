@@ -19,7 +19,9 @@ router.get('/', function (req, res) {
 /* PROCESS POST request for login */
 router.post('/', function (req, res) {
   session = req.session;
-  
+
+  console.log("Ready to call login");
+
   loginWithOAuth(req, res)
     .then(renderPage)
     .catch(renderErrorPage)
@@ -31,6 +33,9 @@ function loginWithOAuth(req, res) {
   var form_body = req.body;
   var username = form_body.username;
   var password = form_body.password;
+
+
+  console.log("loginWithOAuth");
 
   return new Promise(function (fulfill) {
     oauth.login(username, password, session)

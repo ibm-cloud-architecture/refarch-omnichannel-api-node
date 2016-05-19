@@ -12,6 +12,7 @@ var _apis = config.get('APIs');
 
 module.exports.login = function (username, password, session) {
 
+  console.log("inside of oauth.js");
   return new Promise(function (fulfill, reject) {
     if (typeof session.oauth2token !== 'undefined') {
       console.log("Using OAuth Token: " + session.oauth2token);
@@ -28,6 +29,8 @@ module.exports.login = function (username, password, session) {
         operation: _apis.oauth20.paths.authz
       });
 
+
+
       var token_url = api_url.stringify({
         protocol: _apiServer.protocol,
         host: _apiServer.host,
@@ -36,6 +39,15 @@ module.exports.login = function (username, password, session) {
         api: _apis.oauth20.base_path,
         operation: _apis.oauth20.paths.token
       });
+
+
+      console.log("Invoke OAuth endpoint: " + JSON.stringify(token_url));
+    /*  console.log("Invoke OAuth endpoint: " + JSON.stringify(_myApp.client_id));
+      console.log("Invoke OAuth endpoint: " + JSON.stringify(_myApp.client_secret));
+      console.log("Invoke OAuth endpoint: " + JSON.stringify(authz_url));
+      console.log("Invoke OAuth endpoint: " + JSON.stringify(_apis.oauth20.grant_types));
+      console.log("Invoke OAuth endpoint: " + JSON.stringify(_apis.oauth20.redirect_url));
+      console.log("Invoke OAuth endpoint: " + JSON.stringify(_apis.oauth20.scopes)); */
 
       var thinkAuth = new ClientOAuth2({
         clientId: _myApp.client_id,
@@ -46,6 +58,8 @@ module.exports.login = function (username, password, session) {
         redirectUri: _apis.oauth20.redirect_url,
         scopes: _apis.oauth20.scopes
       });
+
+
 
       // Set an option to disable the check for self-signed certificates
       var options = {

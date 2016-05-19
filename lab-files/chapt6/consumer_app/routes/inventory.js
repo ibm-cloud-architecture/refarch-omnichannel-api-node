@@ -18,7 +18,8 @@ var _apis = config.get('APIs');
 router.get('/', function (req, res) {
   session = req.session;
 
-  page_filter = (typeof req.query.filter !== 'undefined') ? JSON.stringify(req.query.filter.order) : false;
+  //page_filter = (typeof req.query.filter !== 'undefined') ? JSON.stringify(req.query.filter.order) : false;
+  page_filter = "";
 
   setGetItemsOptions(req, res)
     .then(sendApiReq)
@@ -54,8 +55,8 @@ function setGetItemsOptions(req, res) {
   if (_apis.inventory.require.indexOf("client_secret") != -1) options.headers["X-IBM-Client-Secret"] = _myApp.client_secret;
 
   // Apply the query filter, if one is present
-  if (typeof query.filter !== 'undefined') options.url += '?filter=' + JSON.stringify(query.filter);
-  else options.url += '?filter[order]=name%20ASC';
+  //if (typeof query.filter !== 'undefined') options.url += '?filter=' + JSON.stringify(query.filter);
+  //else options.url += '?filter[order]=name%20ASC';
 
   return new Promise(function (fulfill) {
 
@@ -64,6 +65,8 @@ function setGetItemsOptions(req, res) {
 
       // If already logged in, add token to request
       if (typeof session.oauth2token !== 'undefined') {
+
+        console.log("Render Inventory with Token: " + session.oauth2token)
         options.headers.Authorization = 'Bearer ' + session.oauth2token;
         fulfill({
           options: options,
@@ -93,12 +96,14 @@ function sendApiReq(function_input) {
   return new Promise(function (fulfill, reject) {
     http.request(options)
       .then(function (result) {
+          //console.log("Inventory call succeeded with result: " + JSON.stringify(result));
         fulfill({
           data: result,
           res: res
         });
       })
       .fail(function (reason) {
+        console.log("Inventory call failed with reason: " + JSON.stringify(reason));
         reject({
           err: reason,
           res: res
