@@ -163,7 +163,11 @@ paths:
         '200':
           description: Request was successful
           schema:
-            type: string
+            type: object
+            properties:
+              count:
+                type: number
+                format: double
       deprecated: false
   /items:
     post:
@@ -239,9 +243,33 @@ paths:
         '200':
           description: Request was successful
           schema:
-            type: string
+            type: object
+            properties:
+              exists:
+                type: boolean
       deprecated: false
   '/items/{id}':
+    head:
+      tags:
+        - item
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'item.exists__head_items_{id}'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
     get:
       tags:
         - item
@@ -370,8 +398,11 @@ paths:
         '200':
           description: Request was successful
           schema:
-            type: integer
-            format: int32
+            type: object
+            properties:
+              count:
+                type: number
+                format: double
       deprecated: false
   /items/change-stream:
     post:
@@ -408,7 +439,279 @@ paths:
           schema:
             type: file
       deprecated: false
+  /stores:
+    post:
+      tags:
+        - store
+      summary: Create a new instance of the model and persist it into the data source.
+      operationId: store.create
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            $ref: '#/definitions/store'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/store'
+      deprecated: false
+    put:
+      tags:
+        - store
+      summary: Update an existing model instance or insert a new one into the data source.
+      operationId: store.upsert
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            $ref: '#/definitions/store'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/store'
+      deprecated: false
+    get:
+      tags:
+        - store
+      summary: Find all instances of the model matched by filter from the data source.
+      operationId: store.find
+      parameters:
+        - name: filter
+          in: query
+          description: 'Filter defining fields, where, include, order, offset, and limit'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/store'
+      deprecated: false
+  '/stores/{id}/exists':
+    get:
+      tags:
+        - store
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'store.exists__get_stores_{id}_exists'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+  '/stores/{id}':
+    head:
+      tags:
+        - store
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'store.exists__head_stores_{id}'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+    get:
+      tags:
+        - store
+      summary: Find a model instance by id from the data source.
+      operationId: store.findById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: filter
+          in: query
+          description: Filter defining fields and include
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/store'
+      deprecated: false
+    delete:
+      tags:
+        - store
+      summary: Delete a model instance by id from the data source.
+      operationId: store.deleteById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+      deprecated: false
+    put:
+      tags:
+        - store
+      summary: Update attributes for a model instance and persist it into the data source.
+      operationId: store.prototype.updateAttributes
+      parameters:
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            $ref: '#/definitions/store'
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/store'
+      deprecated: false
+  /stores/findOne:
+    get:
+      tags:
+        - store
+      summary: Find first instance of the model matched by filter from the data source.
+      operationId: store.findOne
+      parameters:
+        - name: filter
+          in: query
+          description: 'Filter defining fields, where, include, order, offset, and limit'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/store'
+      deprecated: false
+  /stores/update:
+    post:
+      tags:
+        - store
+      summary: Update instances of the model matched by where from the data source.
+      operationId: store.updateAll
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            $ref: '#/definitions/store'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            description: The number of instances updated
+            type: object
+      deprecated: false
+  /stores/count:
+    get:
+      tags:
+        - store
+      summary: Count instances of the model matched by where from the data source.
+      operationId: store.count
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              count:
+                type: number
+                format: double
+      deprecated: false
+  /stores/change-stream:
+    post:
+      tags:
+        - store
+      summary: Create a change stream.
+      operationId: store.createChangeStream__post_stores_change-stream
+      parameters:
+        - name: options
+          in: formData
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: file
+      deprecated: false
+    get:
+      tags:
+        - store
+      summary: Create a change stream.
+      operationId: store.createChangeStream__get_stores_change-stream
+      parameters:
+        - name: options
+          in: query
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: file
+      deprecated: false
 definitions:
+  x-any:
+    properties: {}
   review:
     properties:
       date:
@@ -460,6 +763,28 @@ definitions:
       - description
       - img_alt
       - price
+    additionalProperties: false
+  store:
+    properties:
+      address:
+        type: string
+      city:
+        type: string
+      name:
+        type: string
+      state:
+        type: string
+      zip:
+        type: string
+      id:
+        type: number
+        format: double
+    required:
+      - address
+      - city
+      - name
+      - state
+      - zip
     additionalProperties: false
 swagger: '2.0'
 info:

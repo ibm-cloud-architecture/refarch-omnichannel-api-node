@@ -20,5 +20,9 @@
   "review": {
     "dataSource": "memdb",
     "public": false
+  },
+  "store": {
+    "dataSource": "memdb",
+    "public": true
   }
 }
