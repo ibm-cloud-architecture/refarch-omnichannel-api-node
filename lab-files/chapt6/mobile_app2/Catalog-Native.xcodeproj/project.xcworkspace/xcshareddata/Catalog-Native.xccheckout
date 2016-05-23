@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>F201699B-4409-4965-B2B8-279E336AA0C5</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Catalog-Native</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>DA5001141BA283707508848C17F03967FD4A230B</key>
+		<string>github.com:bignerdranch/enterprise-ios.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>WebServices/Solutions/Catalog-Native/Catalog-Native.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>DA5001141BA283707508848C17F03967FD4A230B</key>
+		<string>../../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github.com:bignerdranch/enterprise-ios.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>DA5001141BA283707508848C17F03967FD4A230B</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>DA5001141BA283707508848C17F03967FD4A230B</string>
+			<key>IDESourceControlWCCName</key>
+			<string>enterprise-ios</string>
+		</dict>
+	</array>
+</dict>
+</plist>
