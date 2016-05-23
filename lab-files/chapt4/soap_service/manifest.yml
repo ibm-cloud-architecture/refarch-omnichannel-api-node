@@ -1,0 +1,6 @@
+---
+applications:
+- name: ship-charge-calc
+  memory: 512M
+  buildpack: https://github.com/cloudfoundry/php-buildpack
+
