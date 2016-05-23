@@ -4,7 +4,46 @@ require_once __DIR__ . '/bootstrap.php';
 $server = new soap_server();
 $server->configureWSDL("shipcharge", "urn:shipcharge");
 
-function distance($toLat, $toLng, $fromLat, $fromLng) {
+function zipGeo ($zip = null) {
+	static $zipData = null;
+
+	// Data wasn't previously loaded from CSV
+    if (is_null($zipData) or is_null($zip)) {
+		$fh = fopen("../zipdata/zipcode.csv", "r");
+
+		// Skip the headerline
+		fgetcsv($fh, 1024);
+
+		$zipData = [];
+		while (!feof($fh)) {
+			$columns = fgetcsv($fh, 1024);
+			$zipData[$columns[0]] = array(
+										"city" => $columns[1],
+										"state" => $columns[2],
+										"latitude" => $columns[3],
+										"longitude" => $columns[4],
+										"timezone" => $columns[5],
+										"dst" => ($columns[6] == 1 ? true : false)
+									);
+		}
+		fclose($fh);
+		return null;
+	}
+
+	// Lookup the Geo coordinates for the specified Zip
+	$geo = null;
+	if (array_key_exists($zip, $zipData)) {
+		$geo = array (
+						'latitude' => $zipData[$zip]['latitude'],
+						'longitude' => $zipData[$zip]['longitude']
+					);
+	}
+
+	return $geo;
+}
+
+
+function distance ($toLat, $toLng, $fromLat, $fromLng) {
   $theta = $toLng - $fromLng;
   $dist = sin(deg2rad($toLat)) * sin(deg2rad($fromLat))
 			+ cos(deg2rad($toLat)) * cos(deg2rad($fromLat)) * cos(deg2rad($theta));
@@ -13,19 +52,6 @@ function distance($toLat, $toLng, $fromLat, $fromLng) {
   $miles = $dist * 60 * 1.1515;
   return round($miles);
 }
-
-function getProd($category) {
-    if ($category == "books") {
-		return join(",", array(
-            "The WordPress Anthology",
-            "PHP Master: Write Cutting Edge Code",
-            "Build Your Own Website the Right Way"));
-	}
-	else {
-		return "No products listed under that category";
-	}
-}
-
 
 $server->wsdl->addComplexType(
 	'geoPoint',
@@ -46,31 +72,47 @@ $server->wsdl->addComplexType(
 );
 
 $server->wsdl->addComplexType(
-	'geoPoints',
+	'strings',
 	'complexType',
 	'array',
 	'',
 	'SOAP-ENC:Array',
 	array(),
 	array(
-		array('ref'=>'SOAP-ENC:arrayType','wsdl:arrayType'=>'tns:geoPoint[]')
+		array('ref'=>'SOAP-ENC:arrayType','wsdl:arrayType'=>'xsd:string[]')
 	),
-	'tns:geoPoint'
+	'xsd:string'
 );
 
-define('SHIP_CHARGE_DIST_MIN', 500);
+define('SHIP_CHARGE_DIST_MIN', 250);
 define('SHIP_CHARGE_PER_MILE', 0.05);
 function calcShipCharge($to, $from) {
-	$dist = distance($to['latitude'], $to['longitude'], $from['latitude'], $from['longitude']);
-	return ($dist < SHIP_CHARGE_DIST_MIN ?
+	$toGeo = zipGeo($to);
+	if (is_null($toGeo))
+		return new soap_fault('Server','', "'$to' isn't a valid Zip code",'');
+
+	$fromGeo = [];
+	foreach ($from as $zip) {
+		$fromGeo[$zip] = zipGeo($zip);
+		if (is_null($fromGeo[$zip]))
+			return new soap_fault('Server','', "'$fromGeo[$zip]' isn't a valid Zip code",'');
+	}
+
+	$dist = [];
+
+	foreach ($fromGeo as $f) {
+		array_push($dist, distance($toGeo['latitude'], $toGeo['longitude'], $f['latitude'], $f['longitude']));
+	}
+	$shortestDist = min($dist);
+	return ($shortestDist < SHIP_CHARGE_DIST_MIN ?
 				SHIP_CHARGE_PER_MILE * SHIP_CHARGE_DIST_MIN :
-				SHIP_CHARGE_PER_MILE * $dist);
+				SHIP_CHARGE_PER_MILE * $shortestDist);
 }
 
 $server->register("calcShipCharge",
     array(
-		"to"   => "tns:geoPoint",
-		"from" => "tns:geoPoint"
+		"to"   => "xsd:string",
+		"from" => "tns:strings"
 	),
     array("shipCharge" => "xsd:float"),
     "urn:shipcharge",
@@ -79,6 +121,10 @@ $server->register("calcShipCharge",
     "encoded",
     "Calculate shipping charge to a given location from the list of distribution points"
 );
+
+
+// Load the Zip codes data
+zipGeo();
 
 if ( !isset( $HTTP_RAW_POST_DATA ) ) $HTTP_RAW_POST_DATA =file_get_contents( 'php://input' );
 $server->service($HTTP_RAW_POST_DATA);
