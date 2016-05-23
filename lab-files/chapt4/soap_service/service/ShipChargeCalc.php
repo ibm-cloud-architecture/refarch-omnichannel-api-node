@@ -54,24 +54,6 @@ function distance ($toLat, $toLng, $fromLat, $fromLng) {
 }
 
 $server->wsdl->addComplexType(
-	'geoPoint',
-	'complexType',
-	'struct',
-	'all',
-	'',
-	array(
-		'latitude' => array(
-			'name' => 'latitude',
-			'type' => 'xsd:float'
-		),
-		'longitude' => array(
-			'name' => 'longitude',
-			'type' => 'xsd:float'
-		)
-	)
-);
-
-$server->wsdl->addComplexType(
 	'strings',
 	'complexType',
 	'array',
