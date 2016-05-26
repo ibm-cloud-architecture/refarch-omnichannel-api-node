@@ -37,7 +37,7 @@
     "reviews": {
       "type": "hasMany",
       "model": "review",
-      "foreignKey": ""
+      "foreignKey": "itemId"
     },
     "stores": {
       "type": "hasMany",

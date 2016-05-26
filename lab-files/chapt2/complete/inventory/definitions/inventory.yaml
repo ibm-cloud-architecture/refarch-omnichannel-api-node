@@ -685,6 +685,299 @@ paths:
           schema:
             type: file
       deprecated: false
+  '/reviews/{id}/items':
+    get:
+      tags:
+        - review
+      summary: Fetches belongsTo relation items.
+      operationId: review.prototype.__get__items
+      parameters:
+        - name: refresh
+          in: query
+          required: false
+          type: boolean
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/item'
+      deprecated: false
+  /reviews:
+    post:
+      tags:
+        - review
+      summary: Create a new instance of the model and persist it into the data source.
+      operationId: review.create
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            $ref: '#/definitions/review'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/review'
+      deprecated: false
+    put:
+      tags:
+        - review
+      summary: Update an existing model instance or insert a new one into the data source.
+      operationId: review.upsert
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            $ref: '#/definitions/review'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/review'
+      deprecated: false
+    get:
+      tags:
+        - review
+      summary: Find all instances of the model matched by filter from the data source.
+      operationId: review.find
+      parameters:
+        - name: filter
+          in: query
+          description: 'Filter defining fields, where, include, order, offset, and limit'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/review'
+      deprecated: false
+  '/reviews/{id}/exists':
+    get:
+      tags:
+        - review
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'review.exists__get_reviews_{id}_exists'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+  '/reviews/{id}':
+    head:
+      tags:
+        - review
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'review.exists__head_reviews_{id}'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+    get:
+      tags:
+        - review
+      summary: Find a model instance by id from the data source.
+      operationId: review.findById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: filter
+          in: query
+          description: Filter defining fields and include
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/review'
+      deprecated: false
+    delete:
+      tags:
+        - review
+      summary: Delete a model instance by id from the data source.
+      operationId: review.deleteById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+      deprecated: false
+    put:
+      tags:
+        - review
+      summary: Update attributes for a model instance and persist it into the data source.
+      operationId: review.prototype.updateAttributes
+      parameters:
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            $ref: '#/definitions/review'
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/review'
+      deprecated: false
+  /reviews/findOne:
+    get:
+      tags:
+        - review
+      summary: Find first instance of the model matched by filter from the data source.
+      operationId: review.findOne
+      parameters:
+        - name: filter
+          in: query
+          description: 'Filter defining fields, where, include, order, offset, and limit'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/review'
+      deprecated: false
+  /reviews/update:
+    post:
+      tags:
+        - review
+      summary: Update instances of the model matched by where from the data source.
+      operationId: review.updateAll
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            $ref: '#/definitions/review'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            description: The number of instances updated
+            type: object
+      deprecated: false
+  /reviews/count:
+    get:
+      tags:
+        - review
+      summary: Count instances of the model matched by where from the data source.
+      operationId: review.count
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              count:
+                type: number
+                format: double
+      deprecated: false
+  /reviews/change-stream:
+    post:
+      tags:
+        - review
+      summary: Create a change stream.
+      operationId: review.createChangeStream__post_reviews_change-stream
+      parameters:
+        - name: options
+          in: formData
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: file
+      deprecated: false
+    get:
+      tags:
+        - review
+      summary: Create a change stream.
+      operationId: review.createChangeStream__get_reviews_change-stream
+      parameters:
+        - name: options
+          in: query
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: file
+      deprecated: false
   '/stores/{id}/items/{fk}':
     get:
       tags:
@@ -1522,26 +1815,27 @@ definitions:
     properties: {}
   review:
     properties:
+      comment:
+        type: string
       date:
         type: string
         format: date
-      reviewer_name:
-        type: string
-      reviewer_email:
-        type: string
-      comment:
-        type: string
+      itemId:
+        type: number
+        format: double
       rating:
         type: number
         format: double
+      reviewer_email:
+        type: string
+      reviewer_name:
+        type: string
       id:
-        type: number
-        format: double
-      itemId:
         type: number
         format: double
     required:
       - date
+      - itemId
       - rating
     additionalProperties: false
   store:
@@ -1581,9 +1875,6 @@ definitions:
         type: number
         format: double
       id:
-        type: number
-        format: double
-      itmeId:
         type: number
         format: double
     required:

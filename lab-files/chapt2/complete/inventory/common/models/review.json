@@ -6,29 +6,39 @@
     "validateUpsert": true
   },
   "properties": {
+    "comment": {
+      "type": "string",
+      "required": false
+    },
     "date": {
       "type": "date",
       "required": true
     },
-    "reviewer_name": {
-      "type": "string",
-      "required": false
+    "itemId": {
+      "type": "number",
+      "required": true
+    },
+    "rating": {
+      "type": "number",
+      "required": true
     },
     "reviewer_email": {
       "type": "string",
       "required": false
     },
-    "comment": {
+    "reviewer_name": {
       "type": "string",
       "required": false
-    },
-    "rating": {
-      "type": "number",
-      "required": true
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "items": {
+      "type": "belongsTo",
+      "model": "item",
+      "foreignKey": "itemId"
+    }
+  },
   "acls": [],
   "methods": {}
 }
