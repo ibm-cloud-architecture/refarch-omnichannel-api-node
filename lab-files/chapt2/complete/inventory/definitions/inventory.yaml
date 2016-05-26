@@ -75,6 +75,158 @@ paths:
           schema:
             $ref: '#/definitions/review'
       deprecated: false
+  '/items/{id}/stores/{fk}':
+    get:
+      tags:
+        - item
+      summary: Find a related item by id for stores.
+      operationId: item.prototype.__findById__stores
+      parameters:
+        - name: fk
+          in: path
+          description: Foreign key for stores
+          required: true
+          type: string
+          format: JSON
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/store'
+      deprecated: false
+    delete:
+      tags:
+        - item
+      summary: Delete a related item by id for stores.
+      operationId: item.prototype.__destroyById__stores
+      parameters:
+        - name: fk
+          in: path
+          description: Foreign key for stores
+          required: true
+          type: string
+          format: JSON
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '204':
+          description: Request was successful
+      deprecated: false
+    put:
+      tags:
+        - item
+      summary: Update a related item by id for stores.
+      operationId: item.prototype.__updateById__stores
+      parameters:
+        - name: fk
+          in: path
+          description: Foreign key for stores
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          required: false
+          schema:
+            $ref: '#/definitions/store'
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/store'
+      deprecated: false
+  '/items/{id}/stores/rel/{fk}':
+    put:
+      tags:
+        - item
+      summary: Add a related item by id for stores.
+      operationId: item.prototype.__link__stores
+      parameters:
+        - name: fk
+          in: path
+          description: Foreign key for stores
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          required: false
+          schema:
+            $ref: '#/definitions/inventory'
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/inventory'
+      deprecated: false
+    delete:
+      tags:
+        - item
+      summary: Remove the stores relation to an item by id.
+      operationId: item.prototype.__unlink__stores
+      parameters:
+        - name: fk
+          in: path
+          description: Foreign key for stores
+          required: true
+          type: string
+          format: JSON
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '204':
+          description: Request was successful
+      deprecated: false
+    head:
+      tags:
+        - item
+      summary: Check the existence of stores relation to an item by id.
+      operationId: item.prototype.__exists__stores
+      parameters:
+        - name: fk
+          in: path
+          description: Foreign key for stores
+          required: true
+          type: string
+          format: JSON
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: boolean
+      deprecated: false
   '/items/{id}/reviews':
     get:
       tags:
@@ -146,6 +298,100 @@ paths:
         - item
       summary: Counts reviews of item.
       operationId: item.prototype.__count__reviews
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              count:
+                type: number
+                format: double
+      deprecated: false
+  '/items/{id}/stores':
+    get:
+      tags:
+        - item
+      summary: Queries stores of item.
+      operationId: item.prototype.__get__stores
+      parameters:
+        - name: filter
+          in: query
+          required: false
+          type: string
+          format: JSON
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/store'
+      deprecated: false
+    post:
+      tags:
+        - item
+      summary: Creates a new instance in stores of this model.
+      operationId: item.prototype.__create__stores
+      parameters:
+        - name: data
+          in: body
+          required: false
+          schema:
+            $ref: '#/definitions/store'
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/store'
+      deprecated: false
+    delete:
+      tags:
+        - item
+      summary: Deletes all stores of this model.
+      operationId: item.prototype.__delete__stores
+      parameters:
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '204':
+          description: Request was successful
+      deprecated: false
+  '/items/{id}/stores/count':
+    get:
+      tags:
+        - item
+      summary: Counts stores of item.
+      operationId: item.prototype.__count__stores
       parameters:
         - name: where
           in: query
@@ -439,6 +685,252 @@ paths:
           schema:
             type: file
       deprecated: false
+  '/stores/{id}/items/{fk}':
+    get:
+      tags:
+        - store
+      summary: Find a related item by id for items.
+      operationId: store.prototype.__findById__items
+      parameters:
+        - name: fk
+          in: path
+          description: Foreign key for items
+          required: true
+          type: string
+          format: JSON
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/item'
+      deprecated: false
+    delete:
+      tags:
+        - store
+      summary: Delete a related item by id for items.
+      operationId: store.prototype.__destroyById__items
+      parameters:
+        - name: fk
+          in: path
+          description: Foreign key for items
+          required: true
+          type: string
+          format: JSON
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '204':
+          description: Request was successful
+      deprecated: false
+    put:
+      tags:
+        - store
+      summary: Update a related item by id for items.
+      operationId: store.prototype.__updateById__items
+      parameters:
+        - name: fk
+          in: path
+          description: Foreign key for items
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          required: false
+          schema:
+            $ref: '#/definitions/item'
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/item'
+      deprecated: false
+  '/stores/{id}/items/rel/{fk}':
+    put:
+      tags:
+        - store
+      summary: Add a related item by id for items.
+      operationId: store.prototype.__link__items
+      parameters:
+        - name: fk
+          in: path
+          description: Foreign key for items
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          required: false
+          schema:
+            $ref: '#/definitions/inventory'
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/inventory'
+      deprecated: false
+    delete:
+      tags:
+        - store
+      summary: Remove the items relation to an item by id.
+      operationId: store.prototype.__unlink__items
+      parameters:
+        - name: fk
+          in: path
+          description: Foreign key for items
+          required: true
+          type: string
+          format: JSON
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '204':
+          description: Request was successful
+      deprecated: false
+    head:
+      tags:
+        - store
+      summary: Check the existence of items relation to an item by id.
+      operationId: store.prototype.__exists__items
+      parameters:
+        - name: fk
+          in: path
+          description: Foreign key for items
+          required: true
+          type: string
+          format: JSON
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: boolean
+      deprecated: false
+  '/stores/{id}/items':
+    get:
+      tags:
+        - store
+      summary: Queries items of store.
+      operationId: store.prototype.__get__items
+      parameters:
+        - name: filter
+          in: query
+          required: false
+          type: string
+          format: JSON
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/item'
+      deprecated: false
+    post:
+      tags:
+        - store
+      summary: Creates a new instance in items of this model.
+      operationId: store.prototype.__create__items
+      parameters:
+        - name: data
+          in: body
+          required: false
+          schema:
+            $ref: '#/definitions/item'
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/item'
+      deprecated: false
+    delete:
+      tags:
+        - store
+      summary: Deletes all items of this model.
+      operationId: store.prototype.__delete__items
+      parameters:
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '204':
+          description: Request was successful
+      deprecated: false
+  '/stores/{id}/items/count':
+    get:
+      tags:
+        - store
+      summary: Counts items of store.
+      operationId: store.prototype.__count__items
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              count:
+                type: number
+                format: double
+      deprecated: false
   /stores:
     post:
       tags:
@@ -709,6 +1201,322 @@ paths:
           schema:
             type: file
       deprecated: false
+  '/inventories/{id}/items':
+    get:
+      tags:
+        - inventory
+      summary: Fetches belongsTo relation items.
+      operationId: inventory.prototype.__get__items
+      parameters:
+        - name: refresh
+          in: query
+          required: false
+          type: boolean
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/item'
+      deprecated: false
+  '/inventories/{id}/stores':
+    get:
+      tags:
+        - inventory
+      summary: Fetches belongsTo relation stores.
+      operationId: inventory.prototype.__get__stores
+      parameters:
+        - name: refresh
+          in: query
+          required: false
+          type: boolean
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/store'
+      deprecated: false
+  /inventories:
+    post:
+      tags:
+        - inventory
+      summary: Create a new instance of the model and persist it into the data source.
+      operationId: inventory.create
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            $ref: '#/definitions/inventory'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/inventory'
+      deprecated: false
+    put:
+      tags:
+        - inventory
+      summary: Update an existing model instance or insert a new one into the data source.
+      operationId: inventory.upsert
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            $ref: '#/definitions/inventory'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/inventory'
+      deprecated: false
+    get:
+      tags:
+        - inventory
+      summary: Find all instances of the model matched by filter from the data source.
+      operationId: inventory.find
+      parameters:
+        - name: filter
+          in: query
+          description: 'Filter defining fields, where, include, order, offset, and limit'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/inventory'
+      deprecated: false
+  '/inventories/{id}/exists':
+    get:
+      tags:
+        - inventory
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'inventory.exists__get_inventories_{id}_exists'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+  '/inventories/{id}':
+    head:
+      tags:
+        - inventory
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'inventory.exists__head_inventories_{id}'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+    get:
+      tags:
+        - inventory
+      summary: Find a model instance by id from the data source.
+      operationId: inventory.findById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: filter
+          in: query
+          description: Filter defining fields and include
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/inventory'
+      deprecated: false
+    delete:
+      tags:
+        - inventory
+      summary: Delete a model instance by id from the data source.
+      operationId: inventory.deleteById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+      deprecated: false
+    put:
+      tags:
+        - inventory
+      summary: Update attributes for a model instance and persist it into the data source.
+      operationId: inventory.prototype.updateAttributes
+      parameters:
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            $ref: '#/definitions/inventory'
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/inventory'
+      deprecated: false
+  /inventories/findOne:
+    get:
+      tags:
+        - inventory
+      summary: Find first instance of the model matched by filter from the data source.
+      operationId: inventory.findOne
+      parameters:
+        - name: filter
+          in: query
+          description: 'Filter defining fields, where, include, order, offset, and limit'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/inventory'
+      deprecated: false
+  /inventories/update:
+    post:
+      tags:
+        - inventory
+      summary: Update instances of the model matched by where from the data source.
+      operationId: inventory.updateAll
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            $ref: '#/definitions/inventory'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            description: The number of instances updated
+            type: object
+      deprecated: false
+  /inventories/count:
+    get:
+      tags:
+        - inventory
+      summary: Count instances of the model matched by where from the data source.
+      operationId: inventory.count
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              count:
+                type: number
+                format: double
+      deprecated: false
+  /inventories/change-stream:
+    post:
+      tags:
+        - inventory
+      summary: Create a change stream.
+      operationId: inventory.createChangeStream__post_inventories_change-stream
+      parameters:
+        - name: options
+          in: formData
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: file
+      deprecated: false
+    get:
+      tags:
+        - inventory
+      summary: Create a change stream.
+      operationId: inventory.createChangeStream__get_inventories_change-stream
+      parameters:
+        - name: options
+          in: query
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: file
+      deprecated: false
 definitions:
   x-any:
     properties: {}
@@ -735,6 +1543,53 @@ definitions:
     required:
       - date
       - rating
+    additionalProperties: false
+  store:
+    properties:
+      address:
+        type: string
+      city:
+        type: string
+      name:
+        type: string
+      state:
+        type: string
+      zip:
+        type: string
+      id:
+        type: number
+        format: double
+    required:
+      - address
+      - city
+      - name
+      - state
+      - zip
+    additionalProperties: false
+  inventory:
+    properties:
+      itemId:
+        description: Item
+        type: number
+        format: double
+      onHand:
+        description: Items available at specific store
+        type: number
+        format: double
+      storeId:
+        description: Store
+        type: number
+        format: double
+      id:
+        type: number
+        format: double
+      itmeId:
+        type: number
+        format: double
+    required:
+      - itemId
+      - onHand
+      - storeId
     additionalProperties: false
   item:
     properties:
@@ -763,28 +1618,6 @@ definitions:
       - description
       - img_alt
       - price
-    additionalProperties: false
-  store:
-    properties:
-      address:
-        type: string
-      city:
-        type: string
-      name:
-        type: string
-      state:
-        type: string
-      zip:
-        type: string
-      id:
-        type: number
-        format: double
-    required:
-      - address
-      - city
-      - name
-      - state
-      - zip
     additionalProperties: false
 swagger: '2.0'
 info:
@@ -829,13 +1662,20 @@ x-ibm-configuration:
     sb:
       properties:
         runtime-url: 'http://localhost:4001'
+    inventory-catalog:
+      properties:
+        lphost: 'https://apiconnect-f789f42e-b21c-468f-a738-4906df07280c.aseriyusibmcom-redbooks.apic.mybluemix.net'
   assembly:
     execute:
-      - invoke:
+      - proxy:
+          title: proxy
+          timeout: 60
+          verb: keep
+          cache-response: protocol
+          cache-ttl: 900
           target-url: $(lphost)$(request.path)
-          tls-profile: 'client:Loopback-client'
   properties:
-    new-property-1:
+    lphost:
       value: 'https://apiconnect-f789f42e-b21c-468f-a738-4906df07280c.aseriyusibmcom-redbooks.apic.mybluemix.net'
       description: ''
       encoded: false

@@ -112,4 +112,22 @@ module.exports = function(app) {
         }
         console.log('Done seeding item data, '+records.length+' records created.');
     });
+	
+
+    var inventoryData = [
+		{
+			"itemId": 1,
+			"storeId": 1,
+			"onHand": 1
+		}
+	];
+
+      app.models.inventory.create(inventoryData, function(err, records) {
+          if (err) {
+              console.log("inventory data already exists.  Duplicate records found: " + err.length);
+              return;
+          }
+          console.log('Done seeding inventory data, '+records.length+' records created.');
+      });
+	  
 };

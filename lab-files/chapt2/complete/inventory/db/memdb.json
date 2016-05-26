@@ -2,7 +2,8 @@
   "ids": {
     "item": 13,
     "review": 1,
-    "store": 2
+    "store": 2,
+    "inventory": 2
   },
   "models": {
     "item": {
@@ -22,6 +23,9 @@
     "review": {},
     "store": {
       "1": "{\"address\":\"11501 Burnet Rd\",\"city\":\"Austin\",\"name\":\"ITSO Super Store\",\"state\":\"TX\",\"zip\":\"78758\",\"id\":1}"
+    },
+    "inventory": {
+      "1": "{\"onHand\":1,\"itemId\":1,\"storeId\":1,\"id\":1}"
     }
   }
 }

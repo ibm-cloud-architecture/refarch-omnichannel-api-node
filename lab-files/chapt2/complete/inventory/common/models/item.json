@@ -38,6 +38,13 @@
       "type": "hasMany",
       "model": "review",
       "foreignKey": ""
+    },
+    "stores": {
+      "type": "hasMany",
+      "model": "store",
+      "foreighKey": "itemId",
+      "through": "inventory",
+      "keyThrough": "storeId"
     }
   },
   "acls": [],
