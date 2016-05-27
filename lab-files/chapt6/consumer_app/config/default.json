@@ -1,7 +1,9 @@
 {
   "Application": {
-    "client_id": "b3540cab-ac31-47d4-9c85-8da9325c15c6",
-    "client_secret": "X4jP5dL4vO1fF3fN8lY4jH6vY0uM7jE7sH5wJ2uW3nD6aU8sV1"
+//    "client_id": "b3540cab-ac31-47d4-9c85-8da9325c15c6",
+    "client_id": "ad3a38f8-fa80-4425-9044-c7277f0bdf6d",
+//    "client_secret": "X4jP5dL4vO1fF3fN8lY4jH6vY0uM7jE7sH5wJ2uW3nD6aU8sV1"
+    "client_secret": "D2wK7gO4oW1lS8hY1bS2gM6bR4lL5nC1sQ4cH0lQ7rS1xF3uI2"
   },
   "API-Server": {
     "protocol": "https",
@@ -13,9 +15,9 @@
     "inventory": {
       "base_path": "/inventory",
       "require": [
-        "client_id",
-        "client_secret",
-        "oauth"
+//        "client_id",
+//        "client_secret",
+//        "oauth"
       ]
     },
     "financing": {
