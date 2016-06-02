@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="PkP-tA-pUy">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="PkP-tA-pUy">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -96,7 +96,7 @@
                                     <barButtonItem title="Add Review" id="doa-8O-5jl">
                                         <connections>
                                             <action selector="addReviews:" destination="Pkq-gx-Ul8" id="SgH-Aq-3Sz"/>
-                                            <segue destination="MjH-Ur-Co6" kind="presentation" id="CqH-QX-x7j"/>
+                                            <segue destination="MjH-Ur-Co6" kind="presentation" identifier="ShowReview" id="CqH-QX-x7j"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>

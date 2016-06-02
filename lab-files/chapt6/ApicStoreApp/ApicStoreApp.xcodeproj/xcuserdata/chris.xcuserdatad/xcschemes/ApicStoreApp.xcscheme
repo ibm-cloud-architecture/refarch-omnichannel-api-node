@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "832CBC571CFEA27600601D5C"
-               BuildableName = "StoreDemoApp.app"
-               BlueprintName = "StoreDemoApp"
-               ReferencedContainer = "container:StoreDemoApp.xcodeproj">
+               BuildableName = "ApicStoreApp.app"
+               BlueprintName = "ApicStoreApp"
+               ReferencedContainer = "container:ApicStoreApp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "832CBC571CFEA27600601D5C"
-            BuildableName = "StoreDemoApp.app"
-            BlueprintName = "StoreDemoApp"
-            ReferencedContainer = "container:StoreDemoApp.xcodeproj">
+            BuildableName = "ApicStoreApp.app"
+            BlueprintName = "ApicStoreApp"
+            ReferencedContainer = "container:ApicStoreApp.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -56,9 +56,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "832CBC571CFEA27600601D5C"
-            BuildableName = "StoreDemoApp.app"
-            BlueprintName = "StoreDemoApp"
-            ReferencedContainer = "container:StoreDemoApp.xcodeproj">
+            BuildableName = "ApicStoreApp.app"
+            BlueprintName = "ApicStoreApp"
+            ReferencedContainer = "container:ApicStoreApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -75,9 +75,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "832CBC571CFEA27600601D5C"
-            BuildableName = "StoreDemoApp.app"
-            BlueprintName = "StoreDemoApp"
-            ReferencedContainer = "container:StoreDemoApp.xcodeproj">
+            BuildableName = "ApicStoreApp.app"
+            BlueprintName = "ApicStoreApp"
+            ReferencedContainer = "container:ApicStoreApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

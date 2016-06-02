@@ -54,6 +54,17 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate, UI
         super.init(coder: aDecoder)
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        //If triggered segue is show item
+        
+        if segue.identifier == "ShowReview" {
+            //figure which row was tapped
+
+                let addReviewController = segue.destinationViewController as! AddReviewController
+                addReviewController.review.itemID = item.id
+        }
+    }
+    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         // cell selected code here
     }

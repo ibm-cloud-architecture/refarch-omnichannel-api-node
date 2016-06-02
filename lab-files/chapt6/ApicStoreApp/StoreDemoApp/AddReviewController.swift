@@ -8,6 +8,14 @@
 
 import UIKit
 
-class AddReviewController: UIViewController {
+class AddReviewController: UIViewController, UINavigationControllerDelegate {
     
+    var review:Review!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        print(review.itemID)
+        
+    }
 }
