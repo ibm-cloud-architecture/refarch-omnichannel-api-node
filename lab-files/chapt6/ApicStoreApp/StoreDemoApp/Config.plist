@@ -9,6 +9,6 @@
 	<key>itemRestUrl</key>
 	<string>https://inventory-companyb.mybluemix.net</string>
 	<key>reviewRestUrl</key>
-	<string>https://socialreviews.socialcompanyc.mybluemix.net</string>
+	<string>http://socialreviews-companyc.mybluemix.net</string>
 </dict>
 </plist>
