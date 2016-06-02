@@ -1,0 +1,93 @@
+//
+//  ItemsViewController.swift
+//  StoreDemoApp
+//
+//  Created by Chris Tchoukaleff on 6/1/16.
+//  Copyright © 2016 IBM. All rights reserved.
+//
+
+import UIKit
+
+class ItemsViewController: UITableViewController {
+    
+    
+    // Mockup data, this data will be returned by api
+    var storeItems: [Item] = [
+        Item(name: "Dayton Meat Chopper", desc: "Punched-card tabulating machines and time clocks were not the only products offered by the young IBM. Seen here in 1930, manufacturing employees of IBM's Dayton Scale Company are assembling Dayton Safety Electric Meat Choppers. These devices, which won the Gold Medal at the 1926 Sesquicentennial International Exposition in Philadelphia, were produced in both counter base and pedestal styles (5000 and 6000 series, respectively). They included one-quarter horsepower models, one-third horsepower machines (Styles 5113, 6113F and 6213F), one-half horsepower types (Styles 5117, 6117F and 6217F) and one horsepower choppers (Styles 5128, 6128F and 6228F). Prices in 1926 varied from $180 to $375. Three years after this photograph was taken, the Dayton Scale Company became an IBM division, and was sold to the Hobart Manufacturing Company in 1934.", altImage: "Dayton Meat Chopper", price: 4599, rating: 0, id: 1, image: "meat-chopper"),
+        
+        Item(name: "Hollerith Tabulator", desc: "This equipment is representative of the tabulating system invented and built for the U.S. Census Bureau by Herman Hollerith (1860-1929). After observing a train conductor punching railroad tickets to identify passengers, Hollerith conceived and developed the idea of using punched holes to record facts about people. These machines were first used in compiling the 1890 Census. Hollerith's patents were later acquired by the Computing-Tabulating-Recording Co. (which was renamed IBM in 1924) and this work became the basis of the IBM Punched Card System. Hollerith's tabulator used simple clock-like counting devices. When an electrical circuit was closed (through a punched hole in a predetermined position on the card), each counter was actuated by an electromagnet. The unit's pointer (clock hand) moved one step each time the magnet was energized. The circuits to the electromagnets were closed by means of a hand-operated press type card reader. The operator placed each card in the reader, pulled down the lever and removed the card after each punched hole was counted.", altImage: "Hollerith Tabulator", price: 10599, rating: 0, id: 2, image: "hollerith-tabulator"),
+        
+        Item(name: "Computing Scale", desc: "In 1885 Julius Pitrat of Gallipolis, Ohio, patented the first computing scale. Six years later, Edward Canby and Orange Ozias of Dayton, Ohio, purchased Pitrat's patents and incorporated The Computing Scale Company as the world's first computing scale vendor. And four years after that, The Computing Scale Company introduced the first automatic computing scale, shown here. In 1911, the Computing Scale Company merged with the International Time Recording Company and Tabulating Machine Company to form the Computing-Tabulating-Recording Company, a business that was renamed IBM in 1924.", altImage: "Computing Scale", price: 699, rating: 0, id: 3, image: "computing-scale")
+        
+    ]
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        //If triggered segue is show item
+        
+        if segue.identifier == "ShowItem" {
+            //figure which row was tapped
+            if let row = tableView.indexPathForSelectedRow?.row {
+                // Get item associated with this row and pass it along
+                
+                let item = storeItems[row]
+                let detailViewController = segue.destinationViewController as! DetailViewController
+                detailViewController.item = item
+            }
+        }
+    }
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return storeItems.count
+    }
+    
+    override func tableView(tableView: UITableView,
+                            cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+
+        // Get a new or recycled cell
+        //let cell = tableView.dequeueReusableCellWithIdentifier("UITableViewCell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("ItemCell",forIndexPath: indexPath) as! ItemCell
+        
+        // Set the text on the cell with the description of the item
+        // that is at the nth index of items, where n = row this cell
+        // will appear in on the tableview
+        let item =  storeItems[indexPath.row]
+        
+        // Configure the cell with the Item
+        cell.nameLabel.text = item.name
+        cell.priceLabel.text = "$\(item.price)"
+        cell.itemImage.image = UIImage(named: item.image)
+
+        
+        //cell.textLabel?.text = item.name
+        //cell.detailTextLabel?.text = "$\(item.price)"
+        return cell
+    
+    }
+    
+    func fetchAllItems() {
+        
+        // make api call or load json data here
+        
+        /*
+        let path = NSBundle.mainBundle().pathForResource("test", ofType: "json")
+        
+        do {
+            let jsonData = try NSData(contentsOfFile: path!, options: .DataReadingMappedIfSafe)
+            
+        }
+        catch{
+            print("error occured reading file")
+        }
+        */
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Get the height of the status bar
+        let statusBarHeight = UIApplication.sharedApplication().statusBarFrame.height
+        let insets = UIEdgeInsets(top: statusBarHeight, left: 0, bottom: 0, right: 0)
+        tableView.contentInset = insets
+        tableView.scrollIndicatorInsets = insets
+    }
+    
+}
