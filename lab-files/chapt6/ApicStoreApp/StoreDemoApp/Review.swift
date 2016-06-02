@@ -26,4 +26,10 @@ class Review:NSObject {
         
         super.init()
     }
+    
+    convenience override init() {
+     
+            self.init(itemID: 200, itemRating: 4,  comments: "Nice", email: "a@b.c", name: "johndoe", id: 3)
+    }
+
 }

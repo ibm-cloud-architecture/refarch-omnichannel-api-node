@@ -30,6 +30,14 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate, UI
         Review(itemID: 12401, itemRating: 3, comments: "Product decent but not great", email: "gangchen@us.ibm.com", name: "Gang Chen", id: 2)
     ]
     
+    @IBAction func unwindToMenu(segue: UIStoryboardSegue) {}
+    
+    @IBAction func unwindAndItemDetail(segue: UIStoryboardSegue) {
+        let source = segue.sourceViewController as! AddReviewController
+        print("successful unwind")
+        
+    }
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -60,8 +68,9 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate, UI
         if segue.identifier == "ShowReview" {
             //figure which row was tapped
 
-                let addReviewController = segue.destinationViewController as! AddReviewController
-                addReviewController.review.itemID = item.id
+                let navigationController = segue.destinationViewController as! UINavigationController
+                let addReviewController = navigationController.childViewControllers[0] as! AddReviewController
+                addReviewController.itemId = item.id
         }
     }
     
