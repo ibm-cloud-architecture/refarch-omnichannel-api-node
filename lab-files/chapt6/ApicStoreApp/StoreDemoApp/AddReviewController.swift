@@ -13,6 +13,8 @@ class AddReviewController: UIViewController, UITextViewDelegate {
     var review:Review = Review()
     var itemId:Int = 0
     
+    var http: Http!
+    
     @IBOutlet weak var comment: UITextView!
     @IBOutlet weak var rating: CosmosView!
     @IBOutlet weak var reviewerName: UITextField!
@@ -29,8 +31,22 @@ class AddReviewController: UIViewController, UITextViewDelegate {
         self.review.name = reviewerName!.text!
         
         print("review object \(self.review.itemRating) with name: \(self.review.name) with comment: \(self.review.comments)")
-        //self.navigationController?.popToRootViewControllerAnimated(true)
-        self.dismissViewControllerAnimated(true, completion: nil)
+     
+        //Prepare REST call to APIC
+        let appDelegate : AppDelegate = AppDelegate().sharedInstance()
+        //let appDelegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        //let userDefaults = appDelegate.userDefaults as? NSUserDefaults
+        
+        var reviewRestUrl: String = appDelegate.userDefaults.objectForKey("reviewRestUrl") as! String
+        reviewRestUrl += "/api/reviews"
+        print("Review REST endpoint is : \(reviewRestUrl)")
+        
+        //Define Parameters
+        let reviewParams = ["comment":self.review.comments,  "itemId":self.review.itemID, "rating":self.review.itemRating, "review_date":"06/06/2016", "reviewer_email":"gchen@ibm.com", "reviewer_name":self.review.name]
+        
+        self.postReviews(reviewRestUrl, parameters: reviewParams as? [String : AnyObject])
+        
+        //self.dismissViewControllerAnimated(true, completion: nil)
         
     }
     override func viewDidLoad() {
@@ -40,11 +56,27 @@ class AddReviewController: UIViewController, UITextViewDelegate {
         comment.layer.borderWidth = 1.0
         comment.layer.cornerRadius = 5.0
         comment.delegate = self
-        print(itemId)
+        
+        
+        //Set up REST framework
+        self.http = Http()
         
     }
     
     func textViewDidBeginEditing(textView: UITextView) {
        textView.text = ""
+    }
+    
+    func postReviews(url: String, parameters: [String: AnyObject]?) {
+        print("calling listReviews")
+        self.http.request(.POST, path: url, parameters: parameters, completionHandler: {(response, error) in
+            // handle response
+            if (error != nil) {
+                print("Error \(error!.localizedDescription)")
+            } else {
+                print("Successfully invoked! \(response)")
+                self.dismissViewControllerAnimated(true, completion: nil)
+            }
+        })
     }
 }
