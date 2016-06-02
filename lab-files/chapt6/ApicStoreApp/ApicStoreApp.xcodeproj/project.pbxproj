@@ -42,6 +42,7 @@
 		83D911B91D00815700AD98E3 /* TrustedPersistantOAuth2Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D911A21D00815700AD98E3 /* TrustedPersistantOAuth2Session.swift */; };
 		83D911BA1D00815700AD98E3 /* UntrustedMemoryOAuth2Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D911A31D00815700AD98E3 /* UntrustedMemoryOAuth2Session.swift */; };
 		83D911BB1D00815700AD98E3 /* CosmosDistrib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D911A51D00815700AD98E3 /* CosmosDistrib.swift */; };
+		88BA54591D00C4030013A68F /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 88BA54581D00C4030013A68F /* Config.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,6 +83,7 @@
 		83D911A21D00815700AD98E3 /* TrustedPersistantOAuth2Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrustedPersistantOAuth2Session.swift; sourceTree = "<group>"; };
 		83D911A31D00815700AD98E3 /* UntrustedMemoryOAuth2Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UntrustedMemoryOAuth2Session.swift; sourceTree = "<group>"; };
 		83D911A51D00815700AD98E3 /* CosmosDistrib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CosmosDistrib.swift; sourceTree = "<group>"; };
+		88BA54581D00C4030013A68F /* Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,12 +119,12 @@
 		832CBC5A1CFEA27600601D5C /* ApicStoreApp */ = {
 			isa = PBXGroup;
 			children = (
+				88BA54551D00C3A10013A68F /* Supporting Files */,
 				832CBC5B1CFEA27600601D5C /* AppDelegate.swift */,
 				832CBC5F1CFEA27600601D5C /* Main.storyboard */,
 				832CBC621CFEA27600601D5C /* Assets.xcassets */,
 				832CBC641CFEA27600601D5C /* LaunchScreen.storyboard */,
 				832CBC6F1CFF431200601D5C /* Item.swift */,
-				832CBC671CFEA27600601D5C /* Info.plist */,
 				832CBC6D1CFF3BC200601D5C /* ItemsViewController.swift */,
 				83D911611CFF4E0500AD98E3 /* datalist.json */,
 				83D911631CFF4E4A00AD98E3 /* datalistdetail.json */,
@@ -177,6 +179,15 @@
 				83D911A51D00815700AD98E3 /* CosmosDistrib.swift */,
 			);
 			path = Cosmos;
+			sourceTree = "<group>";
+		};
+		88BA54551D00C3A10013A68F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				832CBC671CFEA27600601D5C /* Info.plist */,
+				88BA54581D00C4030013A68F /* Config.plist */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -241,6 +252,7 @@
 				832CBC661CFEA27600601D5C /* LaunchScreen.storyboard in Resources */,
 				832CBC631CFEA27600601D5C /* Assets.xcassets in Resources */,
 				832CBC611CFEA27600601D5C /* Main.storyboard in Resources */,
+				88BA54591D00C4030013A68F /* Config.plist in Resources */,
 				83D911621CFF4E0500AD98E3 /* datalist.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

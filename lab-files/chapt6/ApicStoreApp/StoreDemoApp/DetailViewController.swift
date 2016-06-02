@@ -44,8 +44,10 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate, UI
         itemName.text = self.item.name
         itemPrice.text = "$\(self.item.price)"
         itemDescription.text = self.item.desc
-        itemImageDetail.image = UIImage(named: self.item.image)
-        
+        //itemImageDetail.image = UIImage(named: self.item.image)
+        let url = NSURL(string: self.item.image)
+        let data = NSData(contentsOfURL: url!)
+        itemImageDetail.image = UIImage(data: data!)
         
     }
     

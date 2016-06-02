@@ -12,10 +12,34 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    let userDefaults = NSUserDefaults.standardUserDefaults()
+
+    private func prepareDefaultSettings() {
+        
+        let path = NSBundle.mainBundle().pathForResource("Config", ofType: "plist")
+        let dict = NSDictionary(contentsOfFile: path!)
+        
+        let itemRestUrl: String =  dict!.objectForKey("itemRestUrl") as! String
+        let reviewRestUrl: String =  dict!.objectForKey("reviewRestUrl") as! String
+        
+        print("Read plist: \(itemRestUrl)")
+
+        //self.userDefaults.registerDefaults(["itemRestUrl" : itemRestUrl])
+        //self.userDefaults.registerDefaults(["reviewRestUrl" : reviewRestUrl])
+        
+        
+        self.userDefaults.setObject(itemRestUrl, forKey: "itemRestUrl")
+        self.userDefaults.setObject(reviewRestUrl, forKey: "reviewRestUrl")
+        self.userDefaults.synchronize()
+    }
+    
+    func sharedInstance() -> AppDelegate{
+        return UIApplication.sharedApplication().delegate as! AppDelegate
+    }
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        prepareDefaultSettings()
         return true
     }
 
