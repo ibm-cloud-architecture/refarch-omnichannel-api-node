@@ -311,7 +311,8 @@ public class OAuth2Module: AuthzModule {
             // --header 'authorization: Bearer REPLACE_BEARER_TOKEN' \
             // --header 'content-type: application/json' \
             // --header 'x-ibm-client-id: REPLACE_THIS_KEY'
-            return ["authorization":"Bearer \(self.oauth2Session.accessToken!)", "accept":"application/json", "content-type": "application/json", "x-ibm-client-id":"04ba66c7-118f-4e28-9790-1841ff09ce44"]
+           // return ["authorization":"Bearer \(self.oauth2Session.accessToken!)", "accept":"application/json", "content-type": "application/json", "x-ibm-client-id":"04ba66c7-118f-4e28-9790-1841ff09ce44"]
+             return ["authorization":"Bearer \(self.oauth2Session.accessToken!)", "x-ibm-client-id":"04ba66c7-118f-4e28-9790-1841ff09ce44"]
         }
     }
 
