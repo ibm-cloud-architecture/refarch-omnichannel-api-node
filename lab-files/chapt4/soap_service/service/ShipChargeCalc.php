@@ -53,31 +53,19 @@ function distance ($toLat, $toLng, $fromLat, $fromLng) {
   return round($miles);
 }
 
-$server->wsdl->addComplexType(
-	'strings',
-	'complexType',
-	'array',
-	'',
-	'SOAP-ENC:Array',
-	array(),
-	array(
-		array('ref'=>'SOAP-ENC:arrayType','wsdl:arrayType'=>'xsd:string[]')
-	),
-	'xsd:string'
-);
-
 define('SHIP_CHARGE_DIST_MIN', 250);
 define('SHIP_CHARGE_PER_MILE', 0.05);
 function calcShipCharge($to, $from) {
 	$toGeo = zipGeo($to);
 	if (is_null($toGeo))
-		return new soap_fault('Server','', "'$to' isn't a valid Zip code",'');
+		return new soap_fault('Server','', "To '" . $to . "' isn't a valid Zip code",'');
 
+	$fromArr = split(',', $from);
 	$fromGeo = [];
-	foreach ($from as $zip) {
+	foreach ($fromArr as $zip) {
 		$fromGeo[$zip] = zipGeo($zip);
 		if (is_null($fromGeo[$zip]))
-			return new soap_fault('Server','', "'$fromGeo[$zip]' isn't a valid Zip code",'');
+			return new soap_fault('Server','', "From: '" . $zip . "' isn't a valid Zip code",'');
 	}
 
 	$dist = [];
@@ -94,7 +82,7 @@ function calcShipCharge($to, $from) {
 $server->register("calcShipCharge",
     array(
 		"to"   => "xsd:string",
-		"from" => "tns:strings"
+		"from" => "xsd:string"
 	),
     array("shipCharge" => "xsd:float"),
     "urn:shipcharge",
