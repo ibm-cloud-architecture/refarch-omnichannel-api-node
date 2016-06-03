@@ -36,6 +36,10 @@ class ItemsViewController: UITableViewController {
                 let item = storeItems[row]
                 let detailViewController = segue.destinationViewController as! DetailViewController
                 detailViewController.item = item
+                
+                let appDelegate : AppDelegate = AppDelegate().sharedInstance()
+                appDelegate.userDefaults.setObject(item.id, forKey: "currentItemId")
+
             }
         }
     }

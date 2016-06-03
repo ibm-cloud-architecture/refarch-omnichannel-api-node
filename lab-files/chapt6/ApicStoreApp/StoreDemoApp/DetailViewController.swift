@@ -66,6 +66,10 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate, UI
         //let userDefaults = appDelegate.userDefaults as? NSUserDefaults
         
         var reviewRestUrl: String = appDelegate.userDefaults.objectForKey("reviewRestUrl") as! String
+        
+        // For temp APIC testing
+        //var reviewRestUrl: String = "https://api.us.apiconnect.ibmcloud.com/gangchenusibmcom-dev/inventory-catalog"
+        
         reviewRestUrl += "/api/reviews?filter={\"where\":{\"itemId\":\(self.item.id)}}"
         let finalreviewUrl = reviewRestUrl.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
         //reviewRestUrl += "/api/reviews"
@@ -86,8 +90,6 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate, UI
                 //print("Successfully invoked! \(response)")
                 
                 do {
-                    
-                    
                     
                     let resArry = response as! NSArray
                     //let descrip: String = resArry![0].objectForKey("description") as! String

@@ -37,7 +37,12 @@ class AddReviewController: UIViewController, UITextViewDelegate {
         //let appDelegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         //let userDefaults = appDelegate.userDefaults as? NSUserDefaults
         
-        var reviewRestUrl: String = appDelegate.userDefaults.objectForKey("reviewRestUrl") as! String
+        //var reviewRestUrl: String = appDelegate.userDefaults.objectForKey("reviewRestUrl") as! String
+        
+        //For temp APIC testing
+        var reviewRestUrl: String = "https://api.us.apiconnect.ibmcloud.com/gangchenusibmcom-dev/inventory-catalog"
+        
+        
         reviewRestUrl += "/api/reviews"
         print("Review REST endpoint is : \(reviewRestUrl)")
         
@@ -57,10 +62,31 @@ class AddReviewController: UIViewController, UITextViewDelegate {
         comment.layer.cornerRadius = 5.0
         comment.delegate = self
         
+        //Need to retrieve ItemID from memory userDefaults because the OAuth flow interrupts the flow
+        let appDelegate : AppDelegate = AppDelegate().sharedInstance()
+        self.itemId = appDelegate.userDefaults.objectForKey("currentItemId") as! Int
         
         //Set up REST framework
         self.http = Http()
         
+        if (self.http.authzModule == nil)
+        {
+            let apicConfig = ApicConfig(
+            clientId: "04ba66c7-118f-4e28-9790-1841ff09ce44",
+            scopes:["review"])
+            //apicConfig.isWebView = true
+
+            // let gdModule = KeycloakOAuth2Module(config: googleConfig, session: UntrustedMemoryOAuth2Session(accountId: "ACCOUNT_FOR_CLIENTID_\(googleConfig.clientId)"))
+        
+            let gdModule = KeycloakOAuth2Module(config: apicConfig, session: UntrustedMemoryOAuth2Session(accountId: "ACCOUNT_FOR_CLIENTID_\(apicConfig.clientId)"))
+        
+            //let gdModule = AccountManager.addGoogleAccount(apicConfig)
+            self.http.authzModule = gdModule
+
+            // Initiate the OAuth flow
+            let oauthRestUrl: String = "https://api.us.apiconnect.ibmcloud.com/gangchenusibmcom-dev/inventory-catalog/api/oauth"
+            self.initOauth(oauthRestUrl, parameters: nil)
+        }
     }
     
     func textViewDidBeginEditing(textView: UITextView) {
@@ -79,4 +105,17 @@ class AddReviewController: UIViewController, UITextViewDelegate {
             }
         })
     }
+    
+    func initOauth(url: String, parameters: [String: AnyObject]?) {
+        print("calling Init Oauth")
+        self.http.request(.GET, path: url, parameters: parameters, completionHandler: {(response, error) in
+            // handle response
+            if (error != nil) {
+                print("Error \(error!.localizedDescription)")
+            } else {
+                print("Successfully invoked! \(response)")
+            }
+        })
+    }
+
 }

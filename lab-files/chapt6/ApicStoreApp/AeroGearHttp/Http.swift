@@ -144,6 +144,7 @@ public class Http {
                 //delegate = TaskDownloadDelegate()
             } else {
                 print("Into NO multipartData path")
+                print("HTTP Request parameter: \(parameters)")
                 print("Authorization field \(self.authzModule?.authorizationFields())")
                 request = self.requestSerializer.request(finalURL, method: method, parameters: parameters, headers: self.authzModule?.authorizationFields())
                 task = self.session.dataTaskWithRequest(request);
