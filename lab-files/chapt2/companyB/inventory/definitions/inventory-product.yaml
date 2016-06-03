@@ -17,7 +17,7 @@ visibility:
   subscribe:
     type: authenticated
 plans:
-  Silver Plan:
+  SilverPlan:
     title: Silver Plan
     description: Silver Plan
     approval: false

@@ -1,11 +1,5 @@
 paths:
   /reviews/oauth:
-    post:
-      responses:
-        '200':
-          description: Successful Response
-      summary: Oauth Trigger API
-      operationId: review.oauth
     get:
       responses:
         '200':
@@ -106,7 +100,6 @@ info:
     url: 'http://www.companyc.com'
 schemes:
   - https
-  - http
 host: $(catalog.host)
 basePath: /api
 consumes:
@@ -123,8 +116,7 @@ securityDefinitions:
     name: X-IBM-Client-Secret
     type: apiKey
 security:
-  - clientIdHeader: []
-    clientSecretHeader: []
+  - {}
 x-ibm-configuration:
   testable: true
   enforced: true
@@ -140,7 +132,14 @@ x-ibm-configuration:
   assembly:
     execute:
       - invoke:
-          target-url: $(runtime-url)$(request.path)$(request.search)
+          target-url: $(TARGET_HOST)$(request.path)
+          tls-profile: 'client:Loopback-client'
+  properties:
+    TARGET_HOST:
+      value: >-
+        https://apiconnect-d3571303-dbfb-4ac3-aafd-58d476b10569.aseriyusibmcom-redbooks.apic.mybluemix.net
+      description: ''
+      encoded: false
 externalDocs:
   description: Company C Documentation
   url: 'http://www.companyc.com'
