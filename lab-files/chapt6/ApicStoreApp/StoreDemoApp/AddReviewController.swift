@@ -75,8 +75,11 @@ class AddReviewController: UIViewController, UITextViewDelegate {
             
         }else
         {
+            let appDelegate : AppDelegate = AppDelegate().sharedInstance()
+            let clientId: String = appDelegate.userDefaults.objectForKey("clientId") as! String
+            
             let apicConfig = ApicConfig(
-                clientId: "04ba66c7-118f-4e28-9790-1841ff09ce44",
+                clientId: clientId,
                 scopes:["review"])
 
             let gdModule = KeycloakOAuth2Module(config: apicConfig, session: UntrustedMemoryOAuth2Session(accountId: "ACCOUNT_FOR_CLIENTID_\(apicConfig.clientId)"))
@@ -84,8 +87,12 @@ class AddReviewController: UIViewController, UITextViewDelegate {
             AppDelegate().sharedInstance().http.authzModule = gdModule
             
             // Initiate the OAuth flow
-            let oauthRestUrl: String = "https://api.us.apiconnect.ibmcloud.com/gangchenusibmcom-dev/inventory-catalog/api/oauth"
-            self.initOauth(oauthRestUrl, parameters: nil)
+            //let appDelegate : AppDelegate = AppDelegate().sharedInstance()
+            var oAuthRestUrl: String = appDelegate.userDefaults.objectForKey("oAuthRestURL") as! String
+            oAuthRestUrl += "/gangchenusibmcom-dev/inventory-catalog/api/oauth"
+            print("OAuth REST endpoint is : \(oAuthRestUrl)")
+            
+            self.initOauth(oAuthRestUrl, parameters: nil)
         }
     }
     

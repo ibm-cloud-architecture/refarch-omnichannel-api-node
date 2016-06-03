@@ -2,8 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>oAuthRestUrl</key>
+	<string>https://api.us.apiconnect.ibmcloud.com</string>
 	<key>clientId</key>
-	<string></string>
+	<string>04ba66c7-118f-4e28-9790-1841ff09ce44</string>
 	<key>clientSecret</key>
 	<string></string>
 	<key>itemRestUrl</key>

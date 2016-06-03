@@ -22,6 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let itemRestUrl: String =  dict!.objectForKey("itemRestUrl") as! String
         let reviewRestUrl: String =  dict!.objectForKey("reviewRestUrl") as! String
+        let oAuthRestUrl: String = dict!.objectForKey("oAuthRestUrl") as! String
+        let clientId: String = dict!.objectForKey("clientId") as! String
         
         print("Read plist: \(itemRestUrl)")
         
@@ -30,6 +32,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.userDefaults.setObject(itemRestUrl, forKey: "itemRestUrl")
         self.userDefaults.setObject(reviewRestUrl, forKey: "reviewRestUrl")
+        self.userDefaults.setObject(oAuthRestUrl, forKey: "oAuthRestURL")
+        self.userDefaults.setObject(clientId, forKey: "clientId")
         
         if (self.userDefaults.objectForKey("currentItemId") != nil)
         {
