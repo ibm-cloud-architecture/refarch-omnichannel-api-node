@@ -112,4 +112,41 @@ module.exports = function(app) {
         }
         console.log('Done seeding item data, '+records.length+' records created.');
     });
+	
+
+    var inventoryData = [
+		{
+			"itemId": 1,
+			"storeId": 1,
+			"onHand": 1
+		}
+	];
+
+      app.models.inventory.create(inventoryData, function(err, records) {
+          if (err) {
+              console.log("inventory data already exists.  Duplicate records found: " + err.length);
+              return;
+          }
+          console.log('Done seeding inventory data, '+records.length+' records created.');
+      });
+	  
+      var reviewData = [
+  		{
+  			"itemId": 1,
+  			"date": "2016-05-26",
+  			"rating": 3,
+			"reviewer_email": "aseriy@us.ibm.com",
+			"reviewer_name": "Alex Seriy",
+			"comment": ""
+  		}
+	  ];
+
+        app.models.review.create(reviewData, function(err, records) {
+            if (err) {
+                console.log("review data already exists.  Duplicate records found: " + err.length);
+                return;
+            }
+            console.log('Done seeding review data, '+records.length+' records created.');
+        });
+	  
 };

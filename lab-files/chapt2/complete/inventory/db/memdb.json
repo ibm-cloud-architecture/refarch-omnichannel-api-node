@@ -1,8 +1,9 @@
 {
   "ids": {
     "item": 13,
-    "review": 1,
-    "store": 2
+    "review": 2,
+    "store": 2,
+    "inventory": 2
   },
   "models": {
     "item": {
@@ -19,9 +20,14 @@
       "11": "{\"name\":\"Model A Typewriter\",\"description\":\"In 1948 IBM introduced the IBM Model A Standard Electric Typewriter. This machine gave typists a new feeling of comfort and control as the carriage return, back space, tabulator and shift were operated with a fingertip touch. The Model A's multiple-copy control ensured legible carbon copies and stencils.\",\"img_alt\":\"Model A Standard Electric Typewriter\",\"price\":1199.99,\"rating\":0,\"img\":\"images/items/a-typewriter.jpg\",\"id\":11}",
       "12": "{\"name\":\"Selectric Typewriter\",\"description\":\"Unveiled in 1961, the revolutionary Selectric typewriter eliminated the need for conventional type bars and movable carriages by using an innovative typing element on a head-and-rocker assembly, which, in turn, was mounted on a small carrier to move from left to right while typing.\",\"img_alt\":\"Selectric Typewriter\",\"price\":2199.99,\"rating\":0,\"img\":\"images/items/selectric.jpg\",\"id\":12}"
     },
-    "review": {},
+    "review": {
+      "1": "{\"comment\":\"\",\"date\":\"2016-05-26T00:00:00.000Z\",\"itemId\":1,\"rating\":3,\"reviewer_email\":\"aseriy@us.ibm.com\",\"reviewer_name\":\"Alex Seriy\",\"id\":1}"
+    },
     "store": {
       "1": "{\"address\":\"11501 Burnet Rd\",\"city\":\"Austin\",\"name\":\"ITSO Super Store\",\"state\":\"TX\",\"zip\":\"78758\",\"id\":1}"
+    },
+    "inventory": {
+      "1": "{\"onHand\":1,\"itemId\":1,\"storeId\":1,\"id\":1}"
     }
   }
 }

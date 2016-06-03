@@ -1,0 +1,26 @@
+product: 1.0.0
+info:
+  name: inventory
+  title: inventory
+  version: 1.0.0
+  description: Inventory Product for Company B
+  contact:
+    name: Admin
+    email: admin@companyb.com
+    url: 'http://www.companyb.com'
+apis:
+  inventory:
+    $ref: inventory.yaml
+visibility:
+  view:
+    type: public
+  subscribe:
+    type: authenticated
+plans:
+  Silver Plan:
+    title: Silver Plan
+    description: Silver Plan
+    approval: false
+    rate-limit:
+      value: 1000/1hour
+      hard-limit: true

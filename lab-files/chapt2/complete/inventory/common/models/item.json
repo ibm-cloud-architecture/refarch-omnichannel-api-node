@@ -37,7 +37,14 @@
     "reviews": {
       "type": "hasMany",
       "model": "review",
-      "foreignKey": ""
+      "foreignKey": "itemId"
+    },
+    "stores": {
+      "type": "hasMany",
+      "model": "store",
+      "foreighKey": "itemId",
+      "through": "inventory",
+      "keyThrough": "storeId"
     }
   },
   "acls": [],

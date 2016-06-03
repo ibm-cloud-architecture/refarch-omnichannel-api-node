@@ -5,16 +5,17 @@ var oauth = require('../server/js/oauth.js');
 
 var session;
 
-/* GET request for login screen */
+/* GET request for login screen 
 router.get('/', function (req, res) {
   session = req.session;
 
   // render the login page
   res.render('login', {
-    title: 'ThinkIBM Consumer'
+    title: 'ThinkIBM Consumer Login'
   });
 
 });
+*/
 
 /* PROCESS POST request for login */
 router.post('/', function (req, res) {
