@@ -1,0 +1,50 @@
+{
+  "name": "item",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "id": {
+      "type": "number",
+      "id": true,
+      "required": true,
+      "description": "Item ID"
+    },
+    "name": {
+      "type": "string",
+      "required": true,
+      "description": "Item Name"
+    },
+    "description": {
+      "type": "string",
+      "required": true,
+      "description": "Item Description"
+    },
+    "img_alt": {
+      "type": "string",
+      "required": true,
+      "description": "Item Image Title"
+    },
+    "img": {
+      "type": "string",
+      "required": true,
+      "description": "Item Image Location"
+    },
+    "price": {
+      "type": "number",
+      "required": true,
+      "description": "Item Price"
+    },
+    "rating": {
+      "type": "number",
+      "required": false,
+      "description": "Item Rating"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

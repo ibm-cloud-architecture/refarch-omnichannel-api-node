@@ -1,0 +1,191 @@
+paths:
+  /items:
+    post:
+      tags:
+        - item
+      summary: Create a new instance of the model and persist it into the data source.
+      operationId: item.create
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            $ref: '#/definitions/item'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/item'
+      deprecated: false
+    get:
+      tags:
+        - item
+      summary: Find all instances of the model matched by filter from the data source.
+      operationId: item.find
+      parameters:
+        - name: filter
+          in: query
+          description: 'Filter defining fields, where, include, order, offset, and limit'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/item'
+      deprecated: false
+  '/items/{id}':
+    get:
+      tags:
+        - item
+      summary: Find a model instance by id from the data source.
+      operationId: item.findById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: filter
+          in: query
+          description: Filter defining fields and include
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/item'
+      deprecated: false
+    delete:
+      tags:
+        - item
+      summary: Delete a model instance by id from the data source.
+      operationId: item.deleteById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+      deprecated: false
+    put:
+      tags:
+        - item
+      summary: Update attributes for a model instance and persist it into the data source.
+      operationId: item.prototype.updateAttributes
+      parameters:
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            $ref: '#/definitions/item'
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/item'
+      deprecated: false
+definitions:
+  item:
+    properties:
+      id:
+        description: Item ID
+        type: number
+        format: double
+      name:
+        description: Item Name
+        type: string
+      description:
+        description: Item Description
+        type: string
+      img_alt:
+        description: Item Image Title
+        type: string
+      img:
+        description: Item Image Location
+        type: string
+      price:
+        description: Item Price
+        type: number
+        format: double
+      rating:
+        description: Item Rating
+        type: number
+        format: double
+    required:
+      - id
+      - name
+      - description
+      - img_alt
+      - img
+      - price
+    additionalProperties: false
+swagger: '2.0'
+info:
+  x-ibm-name: inventory
+  version: 1.0.0
+  title: inventory
+  contact:
+    name: Admin
+    email: admin@companyb.com
+    url: 'http://www.companyb.com'
+schemes:
+  - https
+  - http
+host: $(catalog.host)
+basePath: /api
+consumes:
+  - application/json
+produces:
+  - application/json
+securityDefinitions:
+  clientIdHeader:
+    type: apiKey
+    in: header
+    name: X-IBM-Client-Id
+  clientSecretHeader:
+    in: header
+    name: X-IBM-Client-Secret
+    type: apiKey
+security:
+  - clientIdHeader: []
+    clientSecretHeader: []
+x-ibm-configuration:
+  testable: true
+  enforced: true
+  cors:
+    enabled: true
+  catalogs:
+    apic-dev:
+      properties:
+        runtime-url: $(TARGET_URL)
+    sb:
+      properties:
+        runtime-url: 'http://localhost:4001'
+  assembly:
+    execute:
+      - invoke:
+          target-url: $(runtime-url)$(request.path)$(request.search)
+externalDocs:
+  url: 'http://www.companyb.com'
+  description: Company B Documentation
