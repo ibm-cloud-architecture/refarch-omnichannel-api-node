@@ -34,8 +34,7 @@ class AddReviewController: UIViewController, UITextViewDelegate {
      
         //Prepare REST call to APIC
         let appDelegate : AppDelegate = AppDelegate().sharedInstance()
-        //let appDelegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        //let userDefaults = appDelegate.userDefaults as? NSUserDefaults
+        let userDefaults = appDelegate.userDefaults as? NSUserDefaults
         
         //var reviewRestUrl: String = appDelegate.userDefaults.objectForKey("reviewRestUrl") as! String
         
@@ -65,24 +64,31 @@ class AddReviewController: UIViewController, UITextViewDelegate {
         //Need to retrieve ItemID from memory userDefaults because the OAuth flow interrupts the flow
         let appDelegate : AppDelegate = AppDelegate().sharedInstance()
         self.itemId = appDelegate.userDefaults.objectForKey("currentItemId") as! Int
+        let userDefaults = appDelegate.userDefaults as? NSUserDefaults
         
         //Set up REST framework
         self.http = Http()
+       
+        let status = appDelegate.userDefaults.objectForKey("authorizationStatus") as! String
         
-        if (self.http.authzModule == nil)
+        print("userDeafult for authStatus: \(status)")
+        
+        if userDefaults!.objectForKey("authorizationStatus") != nil && userDefaults!.objectForKey("authorizationStatus") as! String == "authorized"
+        {
+            print("already authorized")
+            
+        }else
         {
             let apicConfig = ApicConfig(
-            clientId: "04ba66c7-118f-4e28-9790-1841ff09ce44",
-            scopes:["review"])
+                clientId: "04ba66c7-118f-4e28-9790-1841ff09ce44",
+                scopes:["review"])
             //apicConfig.isWebView = true
-
-            // let gdModule = KeycloakOAuth2Module(config: googleConfig, session: UntrustedMemoryOAuth2Session(accountId: "ACCOUNT_FOR_CLIENTID_\(googleConfig.clientId)"))
-        
+            
             let gdModule = KeycloakOAuth2Module(config: apicConfig, session: UntrustedMemoryOAuth2Session(accountId: "ACCOUNT_FOR_CLIENTID_\(apicConfig.clientId)"))
-        
+            
             //let gdModule = AccountManager.addGoogleAccount(apicConfig)
             self.http.authzModule = gdModule
-
+            
             // Initiate the OAuth flow
             let oauthRestUrl: String = "https://api.us.apiconnect.ibmcloud.com/gangchenusibmcom-dev/inventory-catalog/api/oauth"
             self.initOauth(oauthRestUrl, parameters: nil)
@@ -112,8 +118,20 @@ class AddReviewController: UIViewController, UITextViewDelegate {
             // handle response
             if (error != nil) {
                 print("Error \(error!.localizedDescription)")
+                // Set Authorization status
+                let appDelegate : AppDelegate = AppDelegate().sharedInstance()
+                
+                appDelegate.userDefaults.setObject("authorized", forKey: "authorizationStatus")
+                let status = appDelegate.userDefaults.objectForKey("authorizationStatus") as! String
+                
+                print("userDeafult for authStatus: \(status)")
             } else {
                 print("Successfully invoked! \(response)")
+                
+                // Set Authorization status
+                let appDelegate : AppDelegate = AppDelegate().sharedInstance()
+                appDelegate.userDefaults.setObject("authorized", forKey: "authorizationStatus")
+
             }
         })
     }
