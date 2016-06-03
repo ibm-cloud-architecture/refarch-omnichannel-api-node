@@ -2,7 +2,7 @@
 //  Review.swift
 //  StoreDemoApp
 //
-//  Created by Chris Tchoukaleff on 6/1/16.
+//  Created by Gang Chen on 6/1/16.
 //  Copyright © 2016 IBM. All rights reserved.
 //
 

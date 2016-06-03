@@ -2,7 +2,7 @@
 //  AddReviewController.swift
 //  StoreDemoApp
 //
-//  Created by Chris Tchoukaleff on 6/2/16.
+//  Created by Gang Chen on 6/2/16.
 //  Copyright © 2016 IBM. All rights reserved.
 //
 
@@ -13,7 +13,7 @@ class AddReviewController: UIViewController, UITextViewDelegate {
     var review:Review = Review()
     var itemId:Int = 0
     
-    var http: Http!
+    //var http: Http!
     
     @IBOutlet weak var comment: UITextView!
     @IBOutlet weak var rating: CosmosView!
@@ -67,11 +67,11 @@ class AddReviewController: UIViewController, UITextViewDelegate {
         let userDefaults = appDelegate.userDefaults as? NSUserDefaults
         
         //Set up REST framework
-        self.http = Http()
+        //self.http = Http()
        
-        let status = appDelegate.userDefaults.objectForKey("authorizationStatus") as! String
+        //let status = appDelegate.userDefaults.objectForKey("authorizationStatus") as! String
         
-        print("userDeafult for authStatus: \(status)")
+        //print("userDeafult for authStatus: \(status)")
         
         if userDefaults!.objectForKey("authorizationStatus") != nil && userDefaults!.objectForKey("authorizationStatus") as! String == "authorized"
         {
@@ -87,7 +87,8 @@ class AddReviewController: UIViewController, UITextViewDelegate {
             let gdModule = KeycloakOAuth2Module(config: apicConfig, session: UntrustedMemoryOAuth2Session(accountId: "ACCOUNT_FOR_CLIENTID_\(apicConfig.clientId)"))
             
             //let gdModule = AccountManager.addGoogleAccount(apicConfig)
-            self.http.authzModule = gdModule
+            //self.http.authzModule = gdModule
+            AppDelegate().sharedInstance().http.authzModule = gdModule
             
             // Initiate the OAuth flow
             let oauthRestUrl: String = "https://api.us.apiconnect.ibmcloud.com/gangchenusibmcom-dev/inventory-catalog/api/oauth"
@@ -101,7 +102,7 @@ class AddReviewController: UIViewController, UITextViewDelegate {
     
     func postReviews(url: String, parameters: [String: AnyObject]?) {
         print("calling listReviews")
-        self.http.request(.POST, path: url, parameters: parameters, completionHandler: {(response, error) in
+        AppDelegate().sharedInstance().http.request(.POST, path: url, parameters: parameters, completionHandler: {(response, error) in
             // handle response
             if (error != nil) {
                 print("Error \(error!.localizedDescription)")
@@ -114,7 +115,7 @@ class AddReviewController: UIViewController, UITextViewDelegate {
     
     func initOauth(url: String, parameters: [String: AnyObject]?) {
         print("calling Init Oauth")
-        self.http.request(.GET, path: url, parameters: parameters, completionHandler: {(response, error) in
+        AppDelegate().sharedInstance().http.request(.GET, path: url, parameters: parameters, completionHandler: {(response, error) in
             // handle response
             if (error != nil) {
                 print("Error \(error!.localizedDescription)")
