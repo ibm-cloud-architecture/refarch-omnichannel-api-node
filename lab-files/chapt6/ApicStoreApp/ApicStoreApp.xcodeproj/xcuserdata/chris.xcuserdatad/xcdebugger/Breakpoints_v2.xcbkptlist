@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StoreDemoApp/ItemCell.swift"
-            timestampString = "486512583.598407"
+            timestampString = "486668772.168829"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
+            startingLineNumber = "20"
+            endingLineNumber = "20"
             landmarkName = "ItemCell"
             landmarkType = "3">
          </BreakpointContent>

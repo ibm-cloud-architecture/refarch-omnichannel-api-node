@@ -24,13 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let reviewRestUrl: String =  dict!.objectForKey("reviewRestUrl") as! String
         
         print("Read plist: \(itemRestUrl)")
-
-        //self.userDefaults.registerDefaults(["itemRestUrl" : itemRestUrl])
-        //self.userDefaults.registerDefaults(["reviewRestUrl" : reviewRestUrl])
         
-        
+        // set HTTP object to AppDelegate
         self.http = Http()
-        
         
         self.userDefaults.setObject(itemRestUrl, forKey: "itemRestUrl")
         self.userDefaults.setObject(reviewRestUrl, forKey: "reviewRestUrl")
@@ -43,8 +39,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         {
             self.userDefaults.removeObjectForKey("authorizationStatus")
         }
-        
-        
         
         self.userDefaults.synchronize()
     }
@@ -85,8 +79,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-
-        
     }
     
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {

@@ -11,9 +11,7 @@ import UIKit
 class ItemsViewController: UITableViewController {
     
      var http: Http!
-    //var overlayView: UIView?
-    
-    
+        
     // Mockup data, this data will be returned by api
     /*var storeItems: [Item] = [
         Item(name: "Dayton Meat Chopper", desc: "Punched-card tabulating machines and time clocks were not the only products offered by the young IBM. Seen here in 1930, manufacturing employees of IBM's Dayton Scale Company are assembling Dayton Safety Electric Meat Choppers. These devices, which won the Gold Medal at the 1926 Sesquicentennial International Exposition in Philadelphia, were produced in both counter base and pedestal styles (5000 and 6000 series, respectively). They included one-quarter horsepower models, one-third horsepower machines (Styles 5113, 6113F and 6213F), one-half horsepower types (Styles 5117, 6117F and 6217F) and one horsepower choppers (Styles 5128, 6128F and 6228F). Prices in 1926 varied from $180 to $375. Three years after this photograph was taken, the Dayton Scale Company became an IBM division, and was sold to the Hobart Manufacturing Company in 1934.", altImage: "Dayton Meat Chopper", price: 4599, rating: 0, id: 1, image: "meat-chopper"),
@@ -52,11 +50,9 @@ class ItemsViewController: UITableViewController {
                             cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 
         // Get a new or recycled cell
-        //let cell = tableView.dequeueReusableCellWithIdentifier("UITableViewCell", forIndexPath: indexPath)
         let cell = tableView.dequeueReusableCellWithIdentifier("ItemCell",forIndexPath: indexPath) as! ItemCell
         
-        // Set the text on the cell with the description of the item
-        // that is at the nth index of items, where n = row this cell
+        // Set the text on the cell with the description of the item, where n = row this cell
         // will appear in on the tableview
         let item =  storeItems[indexPath.row]
         
@@ -65,14 +61,10 @@ class ItemsViewController: UITableViewController {
         cell.priceLabel.text = "$\(item.price)"
         
         // Used for Local mockup
-        //cell.itemImage.image = UIImage(named: item.image)
         let url = NSURL(string: item.image)
         let data = NSData(contentsOfURL: url!)
         cell.itemImage.image = UIImage(data: data!)
 
-        
-        //cell.textLabel?.text = item.name
-        //cell.detailTextLabel?.text = "$\(item.price)"
         return cell
     
     }
@@ -82,22 +74,17 @@ class ItemsViewController: UITableViewController {
         
         
         let appDelegate : AppDelegate = AppDelegate().sharedInstance()
-        //let appDelegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        //let userDefaults = appDelegate.userDefaults as? NSUserDefaults
-        
         var itemRestUrl: String = appDelegate.userDefaults.objectForKey("itemRestUrl") as! String
         itemRestUrl += "/api/items"
         print("Item REST endpoint is : \(itemRestUrl)")
+        
         //Set up REST framework
         self.http = Http()
         self.listInventory(itemRestUrl, parameters: nil)
         
-        //self.listInventory("https://api.us.apiconnect.ibmcloud.com/gangchenusibmcom-dev/inventory-catalog/api/items/1", parameters: nil)
-        
-        //Set Response to Table Store
-        
-        
+        // Set Response to Table Store
         // Get the height of the status bar
+        
         let statusBarHeight = UIApplication.sharedApplication().statusBarFrame.height
         let insets = UIEdgeInsets(top: statusBarHeight, left: 0, bottom: 0, right: 0)
         tableView.contentInset = insets
@@ -119,12 +106,10 @@ class ItemsViewController: UITableViewController {
                     
                     
                     let resArry = response as! NSArray
-                    //let descrip: String = resArry![0].objectForKey("description") as! String
                     for respItem in resArry {
                         
                         let newItem = Item(name: respItem.objectForKey("name") as! String, desc: respItem.objectForKey("description") as! String, altImage: respItem.objectForKey("img") as? String, price: respItem.objectForKey("price") as! Int, rating: respItem.objectForKey("rating") as! Int, id: respItem.objectForKey("id") as! Int, image: respItem.objectForKey("img") as! String)
                         self.storeItems.append(newItem)
-                        //print(newItem)
                         self.tableView.reloadData()
                     }
                     

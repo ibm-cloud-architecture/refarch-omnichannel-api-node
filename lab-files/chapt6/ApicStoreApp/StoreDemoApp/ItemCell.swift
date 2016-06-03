@@ -12,15 +12,6 @@ class ItemCell: UITableViewCell {
     
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var priceLabel: UILabel!
-    
     @IBOutlet var itemImage: UIImageView!
-    
-   // @IBOutlet var imageLabel: UIImage!
-    
-   // @IBOutlet var newImage: UIImageView!
-    
-    //@IBOutlet var nameLabel: UILabel!
-    //@IBOutlet var priceLabel: UILabel!
-    //@IBOutlet var imageView: UIImageView!
     
 }

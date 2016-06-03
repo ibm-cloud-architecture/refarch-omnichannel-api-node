@@ -67,11 +67,7 @@ class AddReviewController: UIViewController, UITextViewDelegate {
         let userDefaults = appDelegate.userDefaults as? NSUserDefaults
         
         //Set up REST framework
-        //self.http = Http()
-       
-        //let status = appDelegate.userDefaults.objectForKey("authorizationStatus") as! String
-        
-        //print("userDeafult for authStatus: \(status)")
+        //First check to see if app already authorized, otherwise open OAuth session
         
         if userDefaults!.objectForKey("authorizationStatus") != nil && userDefaults!.objectForKey("authorizationStatus") as! String == "authorized"
         {
@@ -82,12 +78,9 @@ class AddReviewController: UIViewController, UITextViewDelegate {
             let apicConfig = ApicConfig(
                 clientId: "04ba66c7-118f-4e28-9790-1841ff09ce44",
                 scopes:["review"])
-            //apicConfig.isWebView = true
-            
+
             let gdModule = KeycloakOAuth2Module(config: apicConfig, session: UntrustedMemoryOAuth2Session(accountId: "ACCOUNT_FOR_CLIENTID_\(apicConfig.clientId)"))
             
-            //let gdModule = AccountManager.addGoogleAccount(apicConfig)
-            //self.http.authzModule = gdModule
             AppDelegate().sharedInstance().http.authzModule = gdModule
             
             // Initiate the OAuth flow
