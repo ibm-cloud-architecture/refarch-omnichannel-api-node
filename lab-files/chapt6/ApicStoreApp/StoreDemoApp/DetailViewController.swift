@@ -55,7 +55,7 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate, UI
         
     }
     
-    
+    /*
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -68,6 +68,26 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate, UI
         reviewRestUrl += "/api/reviews?filter={\"where\":{\"itemId\":\(self.item.id)}}"
         let finalreviewUrl = reviewRestUrl.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
 
+        print("Review REST endpoint is : \(reviewRestUrl)")
+        //Set up REST framework
+        self.http = Http()
+        self.listReviews(finalreviewUrl, parameters: nil)
+        
+    }*/
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        reviewTable.delegate = self
+        reviewTable.dataSource = self
+        
+        //reload reviews when view appears after closing modal
+        let appDelegate : AppDelegate = AppDelegate().sharedInstance()
+        var reviewRestUrl: String = appDelegate.userDefaults.objectForKey("reviewRestUrl") as! String
+        
+        reviewRestUrl += "/api/reviews?filter={\"where\":{\"itemId\":\(self.item.id)}}"
+        let finalreviewUrl = reviewRestUrl.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
+        
         print("Review REST endpoint is : \(reviewRestUrl)")
         //Set up REST framework
         self.http = Http()
@@ -90,7 +110,7 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate, UI
                     //let descrip: String = resArry![0].objectForKey("description") as! String
                     for respItem in resArry {
                         
-                       let newReview = Review(itemID: respItem.objectForKey("itemId") as! Int, itemRating: respItem.objectForKey("rating") as! Int, comments: respItem.objectForKey("comment") as! String, email: respItem.objectForKey("reviewer_email") as! String, name: respItem.objectForKey("reviewer_name") as! String, id: respItem.objectForKey("id") as! Int)
+                       let newReview = Review(itemID: respItem.objectForKey("itemId") as! Int, itemRating: respItem.objectForKey("rating") as! Double, comments: respItem.objectForKey("comment") as! String, email: respItem.objectForKey("reviewer_email") as! String, name: respItem.objectForKey("reviewer_name") as! String, id: respItem.objectForKey("id") as! Int)
                         
                        self.reviewList.append(newReview)
                        self.reviewTable.reloadData()

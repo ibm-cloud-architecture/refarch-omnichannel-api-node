@@ -84,7 +84,9 @@ paths:
     put:
       tags:
         - item
-      summary: Update attributes for a model instance and persist it into the data source.
+      summary: >-
+        Update attributes for a model instance and persist it into the data
+        source.
       operationId: item.prototype.updateAttributes
       parameters:
         - name: data
@@ -151,7 +153,6 @@ info:
     url: 'http://www.companyb.com'
 schemes:
   - https
-  - http
 host: $(catalog.host)
 basePath: /api
 consumes:
@@ -168,8 +169,7 @@ securityDefinitions:
     name: X-IBM-Client-Secret
     type: apiKey
 security:
-  - clientIdHeader: []
-    clientSecretHeader: []
+  - {}
 x-ibm-configuration:
   testable: true
   enforced: true
@@ -185,7 +185,15 @@ x-ibm-configuration:
   assembly:
     execute:
       - invoke:
-          target-url: $(runtime-url)$(request.path)$(request.search)
+          target-url: $(TARGET_HOST)$(request.path)
+          tls-profile: 'client:Loopback-client'
+  gateway: datapower-gateway
+  properties:
+    TARGET_HOST:
+      value: >-
+        https://apiconnect-7d1ac428-ff1f-4cc7-8a05-7534d6e400e2.aseriyusibmcom-redbooks.apic.mybluemix.net
+      description: ''
+      encoded: false
 externalDocs:
   url: 'http://www.companyb.com'
   description: Company B Documentation

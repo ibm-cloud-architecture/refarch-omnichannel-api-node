@@ -26,7 +26,7 @@ class AddReviewController: UIViewController, UITextViewDelegate {
         
         print("Ready to submit review comment")
         self.review.comments = comment.text
-        self.review.itemRating = Int(rating.rating)
+        self.review.itemRating = rating.rating
         self.review.itemID = itemId
         self.review.name = reviewerName!.text!
         

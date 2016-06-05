@@ -10,13 +10,13 @@ import UIKit
 
 class Review:NSObject {
     var itemID: Int
-    var itemRating: Int
+    var itemRating: Double
     var comments: String
     var email: String
     var name: String
     var id: Int
     
-    init (itemID: Int, itemRating: Int, comments: String, email: String, name: String, id: Int) {
+    init (itemID: Int, itemRating: Double, comments: String, email: String, name: String, id: Int) {
         self.itemID = itemID
         self.itemRating = itemRating
         self.comments = comments
