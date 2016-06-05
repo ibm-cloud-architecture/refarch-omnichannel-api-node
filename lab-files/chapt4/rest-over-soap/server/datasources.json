@@ -1,0 +1,16 @@
+{
+  "shipcharge": {
+    "url": "https://shipchargecalc-redbooks.mybluemix.net/ShipChargeCalc.php/shipcharge",
+    "name": "shipcharge",
+    "wsdl": "https://shipchargecalc-redbooks.mybluemix.net/ShipChargeCalc.php/shipcharge?wsdl",
+    "remotingEnabled": true,
+    "connector": "soap",
+    "operations": {
+      "calcShipCharge": {
+        "service": "shipcharge",
+        "port": "shipchargePort",
+        "operation": "calcShipCharge"
+      }
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "name": "shipcharge",
+  "plural": "shipcharge",
+  "base": "Model",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {},
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}
