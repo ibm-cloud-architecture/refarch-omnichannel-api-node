@@ -38,8 +38,7 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate, UI
     @IBAction func unwindToMenu(segue: UIStoryboardSegue) {}
     
     @IBAction func unwindAndItemDetail(segue: UIStoryboardSegue) {
-        let source = segue.sourceViewController as! AddReviewController
-        print("successful unwind")
+        print("Back to previous page")
         
     }
     
@@ -54,26 +53,6 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate, UI
         itemImageDetail.image = UIImage(data: data!)
         
     }
-    
-    /*
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        reviewTable.delegate = self
-        reviewTable.dataSource = self
-        
-        let appDelegate : AppDelegate = AppDelegate().sharedInstance()
-        var reviewRestUrl: String = appDelegate.userDefaults.objectForKey("reviewRestUrl") as! String
-        
-        reviewRestUrl += "/api/reviews?filter={\"where\":{\"itemId\":\(self.item.id)}}"
-        let finalreviewUrl = reviewRestUrl.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
-
-        print("Review REST endpoint is : \(reviewRestUrl)")
-        //Set up REST framework
-        self.http = Http()
-        self.listReviews(finalreviewUrl, parameters: nil)
-        
-    }*/
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)

@@ -106,7 +106,6 @@ public class OAuth2Module: AuthzModule {
         // request in the external browser process.
         applicationDidBecomeActiveNotificationObserver = NSNotificationCenter.defaultCenter().addObserverForName(AGAppDidBecomeActiveNotification, object:nil, queue:nil, usingBlock: { (note: NSNotification!) -> Void in
             // check the state
-            print("In Oauth2 module received notification")
             if (self.state == .AuthorizationStatePendingExternalApproval) {
                 // unregister
                 self.stopObserving()

@@ -84,8 +84,8 @@ public class GoogleConfig: Config {
 
 
 /**
- A Config object that setups Google specific configuration parameters.
- */
+ A Config object that setups IBM API Connect specific configuration parameters.
+
 public class ApicConfig: Config {
     /**
      Init a APIC configuration.
@@ -113,7 +113,7 @@ public class ApicConfig: Config {
         }
     }
 }
-
+ */
 
 /**
 A Config object that setups Keycloak specific configuration parameters.

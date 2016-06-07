@@ -82,7 +82,7 @@ class AddReviewController: UIViewController, UITextViewDelegate {
                 clientId: clientId,
                 scopes:["review"])
 
-            let gdModule = KeycloakOAuth2Module(config: apicConfig, session: UntrustedMemoryOAuth2Session(accountId: "ACCOUNT_FOR_CLIENTID_\(apicConfig.clientId)"))
+            let gdModule = ApicOAuth2Module(config: apicConfig, session: UntrustedMemoryOAuth2Session(accountId: "ACCOUNT_FOR_CLIENTID_\(apicConfig.clientId)"))
             
             AppDelegate().sharedInstance().http.authzModule = gdModule
             

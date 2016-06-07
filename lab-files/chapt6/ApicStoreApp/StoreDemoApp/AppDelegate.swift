@@ -24,6 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let reviewRestUrl: String =  dict!.objectForKey("reviewRestUrl") as! String
         let oAuthRestUrl: String = dict!.objectForKey("oAuthRestUrl") as! String
         let clientId: String = dict!.objectForKey("clientId") as! String
+        let baseUrl: String = dict!.objectForKey("oauthBaseUrl") as! String
+        let redirectUrl: String = dict!.objectForKey("oauthRedirectUri") as! String
         
         print("Read plist: \(itemRestUrl)")
         
@@ -34,6 +36,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.userDefaults.setObject(reviewRestUrl, forKey: "reviewRestUrl")
         self.userDefaults.setObject(oAuthRestUrl, forKey: "oAuthRestURL")
         self.userDefaults.setObject(clientId, forKey: "clientId")
+        self.userDefaults.setObject(baseUrl, forKey: "oauthBaseUrl")
+        self.userDefaults.setObject(redirectUrl, forKey: "oauthRedirectUri")
         
         if (self.userDefaults.objectForKey("currentItemId") != nil)
         {

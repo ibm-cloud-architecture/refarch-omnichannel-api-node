@@ -41,6 +41,8 @@
 		83D911BA1D00815700AD98E3 /* UntrustedMemoryOAuth2Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D911A31D00815700AD98E3 /* UntrustedMemoryOAuth2Session.swift */; };
 		83D911BB1D00815700AD98E3 /* CosmosDistrib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D911A51D00815700AD98E3 /* CosmosDistrib.swift */; };
 		88BA54591D00C4030013A68F /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 88BA54581D00C4030013A68F /* Config.plist */; };
+		88BA545B1D06640E0013A68F /* ApicConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BA545A1D06640E0013A68F /* ApicConfig.swift */; };
+		88BE50891D066AC30094A262 /* ApicOAuth2Module.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BE50881D066AC30094A262 /* ApicOAuth2Module.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,6 +82,8 @@
 		83D911A31D00815700AD98E3 /* UntrustedMemoryOAuth2Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UntrustedMemoryOAuth2Session.swift; sourceTree = "<group>"; };
 		83D911A51D00815700AD98E3 /* CosmosDistrib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CosmosDistrib.swift; sourceTree = "<group>"; };
 		88BA54581D00C4030013A68F /* Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
+		88BA545A1D06640E0013A68F /* ApicConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApicConfig.swift; sourceTree = "<group>"; };
+		88BE50881D066AC30094A262 /* ApicOAuth2Module.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApicOAuth2Module.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +131,8 @@
 				83D911871CFFC54D00AD98E3 /* Review.swift */,
 				83D911891CFFCF1200AD98E3 /* ReviewCell.swift */,
 				83D9118B1D00799700AD98E3 /* AddReviewController.swift */,
+				88BA545A1D06640E0013A68F /* ApicConfig.swift */,
+				88BE50881D066AC30094A262 /* ApicOAuth2Module.swift */,
 			);
 			name = ApicStoreApp;
 			path = StoreDemoApp;
@@ -261,7 +267,9 @@
 				83D911B91D00815700AD98E3 /* TrustedPersistantOAuth2Session.swift in Sources */,
 				83D911B31D00815700AD98E3 /* FacebookOAuth2Module.swift in Sources */,
 				83D911881CFFC54D00AD98E3 /* Review.swift in Sources */,
+				88BA545B1D06640E0013A68F /* ApicConfig.swift in Sources */,
 				832CBC701CFF431200601D5C /* Item.swift in Sources */,
+				88BE50891D066AC30094A262 /* ApicOAuth2Module.swift in Sources */,
 				83D911B21D00815700AD98E3 /* DateUtils.swift in Sources */,
 				83D9118C1D00799700AD98E3 /* AddReviewController.swift in Sources */,
 				83D911841CFF9ACB00AD98E3 /* DetailViewController.swift in Sources */,

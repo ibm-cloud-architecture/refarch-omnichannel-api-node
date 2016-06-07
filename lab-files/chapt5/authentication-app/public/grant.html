@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>IBM API Connect OAuth Authorize Page</title>
+    <link rel="stylesheet" href="form.css"></link>
+  </head>
+<body>
+  <div>
+  <div>
+  <form method="post" enctype="application/x-www-form-urlencoded" action="authorize">
+  <input type="hidden" name="dp-state"       value="A"/>
+  <input type="hidden" name="resource-owner" value="A"/>
+  <input type="hidden" name="dp-data" value="A"/>
+  <input type="hidden" name="redirect_uri"   value="A"/>
+  <input type="hidden" name="scope" value="A"/>
+  <input type="hidden" name="original-url" value="A"/>
+  <input type="hidden" name="client_id" value="A"/>
+  <h1>IBM API Connect</h1>
+  <AZ-INJECT-HIDDEN-INPUT-FIELDS/><h2>Greetings...</h2>
+  <DISPLAY-RESOURCE-OWNER/><h2>This Redbook Mobile App would like to access your social review data.</h2>
+  <OAUTH-APPLICATION-NAME/>
+  <div>
+  <button class="button-left" type="submit" name="approve" value="false">No Thanks</button>
+  <button class="button-right" type="submit" name="approve" value="true">Allow Access</button>
+  </div>
+  </form>
+  </div>
+  <AZ-INTERNAL-CUSTOM-FORM-ERROR/>
+  </div>
+
+</body>
+</html>
