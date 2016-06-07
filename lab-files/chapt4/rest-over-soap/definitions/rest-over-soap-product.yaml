@@ -1,20 +1,16 @@
-product: '1.0.0'
-
+product: 1.0.0
 info:
-  name: soap-example
-  title: soap-example
+  name: rest-over-soap
+  title: rest-over-soap
   version: 1.0.0
-
 apis:
-  'soap-example':
-    $ref: soap-example.yaml
-
+  soap-example:
+    $ref: rest-over-soap.yaml
 visibility:
   view:
     type: public
   subscribe:
     type: authenticated
-
 plans:
   default:
     title: Default Plan

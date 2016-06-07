@@ -10,7 +10,7 @@ module.exports = function(shipcharge) {
 	// See: https://docs.strongloop.com/display/public/LB/SOAP+connector#SOAPconnector-CreatingamodelfromaSOAPdatasource
 	// and https://github.com/strongloop/loopback-connector-soap/issues/17 for more information
 	shipchargeDS.once('connected', function shipchargeConnectorConnectedCallback () {
-		shipcharge.calc = function (to, from, cb) {
+		shipcharge.amount = function (to, from, cb) {
 			console.log("To: " + to);
 			console.log("From: " + from);
 			shipcharge.calcShipCharge(
@@ -31,13 +31,13 @@ module.exports = function(shipcharge) {
 		};
 
 		loopback.remoteMethod(
-		    shipcharge.calc, {
+		    shipcharge.amount, {
 		       accepts: [
 		         {arg: 'to', type: 'string', required: true, http: {source: 'query'}},
 				 {arg: 'from', type: 'string', required: true, http: {source: 'query'}}
 		       ],
 		       returns: {arg: 'result', type: 'object', root: true},
-		       http: {verb: 'get', path: '/calc'}
+		       http: {verb: 'get', path: '/amount'}
 		    }
 		);
 
