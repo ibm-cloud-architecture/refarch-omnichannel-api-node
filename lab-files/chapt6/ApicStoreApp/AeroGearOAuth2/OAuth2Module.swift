@@ -90,10 +90,7 @@ public class OAuth2Module: AuthzModule {
         // register with the notification system in order to be notified when the 'authorization' process completes in the
         // external browser, and the oauth code is available so that we can then proceed to request the 'access_token'
         // from the server.
-        
-        print("Request an authorization code.")
         applicationLaunchNotificationObserver = NSNotificationCenter.defaultCenter().addObserverForName(AGAppLaunchedWithURLNotification, object: nil, queue: nil, usingBlock: { (notification: NSNotification!) -> Void in
-            print("Add Notification Observer")
             self.extractCode(notification, completionHandler: completionHandler)
             if ( self.webView != nil ) {
                 UIApplication.sharedApplication().keyWindow?.rootViewController?.dismissViewControllerAnimated(true, completion: nil)
@@ -118,16 +115,13 @@ public class OAuth2Module: AuthzModule {
         self.state = .AuthorizationStatePendingExternalApproval
 
         // calculate final url
-        let params = "?scope=\(config.scope)&redirect_uri=\(config.redirectURL)&client_id=\(config.clientId)&response_type=token&state=xyz"
-
+        let params = "?scope=\(config.scope)&redirect_uri=\(config.redirectURL.urlEncode())&client_id=\(config.clientId)&response_type=code"
         guard let computedUrl = http.calculateURL(config.baseURL, url:config.authzEndpoint) else {
-            print("Malformed auth url")
             let error = NSError(domain:AGAuthzErrorDomain, code:0, userInfo:["NSLocalizedDescriptionKey": "Malformatted URL."])
             completionHandler(nil, error)
             return
         }
         let url = NSURL(string:computedUrl.absoluteString + params)
-        print("OAuth url \(url)")
         if let url = url {
             if self.webView != nil {
                 self.webView!.targetURL = url
@@ -180,9 +174,8 @@ public class OAuth2Module: AuthzModule {
     :param: completionHandler A block object to be executed when the request operation finishes.
     */
     public func exchangeAuthorizationCodeForAccessToken(code: String, completionHandler: (AnyObject?, NSError?) -> Void) {
-        /*var paramDict: [String: String] = ["code": code, "client_id": config.clientId, "redirect_uri": config.redirectURL, "grant_type":"authorization_code"]
+        var paramDict: [String: String] = ["code": code, "client_id": config.clientId, "redirect_uri": config.redirectURL, "grant_type":"authorization_code"]
         
-        print("exchange authourization code for an access token")
         if let unwrapped = config.clientSecret {
             paramDict["client_secret"] = unwrapped
         }
@@ -205,14 +198,7 @@ public class OAuth2Module: AuthzModule {
                 self.oauth2Session.saveAccessToken(accessToken, refreshToken: refreshToken, accessTokenExpiration: exp, refreshTokenExpiration: expRefresh)
                 completionHandler(accessToken, nil)
             }
-*/
-        let accessToken: String = code
-        let refreshToken: String? = ""
-        //let expiration = 3600
-        let exp: String? = "3600"
-        let expRefresh: String? = "1200"
-        self.oauth2Session.saveAccessToken(accessToken, refreshToken: refreshToken, accessTokenExpiration: exp, refreshTokenExpiration: expRefresh)
-            completionHandler(accessToken, nil)
+        })
     }
 
     /**
@@ -221,7 +207,6 @@ public class OAuth2Module: AuthzModule {
     :param: completionHandler A block object to be executed when the request operation finishes.
     */
     public func requestAccess(completionHandler: (AnyObject?, NSError?) -> Void) {
-        print("Gateway to request authorization access.")
         if (self.oauth2Session.accessToken != nil && self.oauth2Session.tokenIsNotExpired()) {
             // we already have a valid access token, nothing more to be done
             completionHandler(self.oauth2Session.accessToken!, nil);
@@ -305,15 +290,7 @@ public class OAuth2Module: AuthzModule {
         if (self.oauth2Session.accessToken == nil) {
             return nil
         } else {
-            // APIC specific: Need to add extra header field for APIC:
-            // --header 'accept: application/json' \
-            // --header 'authorization: Bearer REPLACE_BEARER_TOKEN' \
-            // --header 'content-type: application/json' \
-            // --header 'x-ibm-client-id: REPLACE_THIS_KEY'
-           // return ["authorization":"Bearer \(self.oauth2Session.accessToken!)", "accept":"application/json", "content-type": "application/json", "x-ibm-client-id":"04ba66c7-118f-4e28-9790-1841ff09ce44"]
-            let appDelegate : AppDelegate = AppDelegate().sharedInstance()
-            let clientId: String = appDelegate.userDefaults.objectForKey("clientId") as! String
-            return ["authorization":"Bearer \(self.oauth2Session.accessToken!)", "x-ibm-client-id":clientId]
+            return ["Authorization":"Bearer \(self.oauth2Session.accessToken!)"]
         }
     }
 
@@ -329,16 +306,11 @@ public class OAuth2Module: AuthzModule {
     // MARK: Internal Methods
 
     func extractCode(notification: NSNotification, completionHandler: (AnyObject?, NSError?) -> Void) {
-        print("Extract Access token")
         let url: NSURL? = (notification.userInfo as! [String: AnyObject])[UIApplicationLaunchOptionsURLKey] as? NSURL
 
-        print("Extract Url \(url)")
         // extract the code from the URL
-        //let code = self.parametersFromQueryString(url?.query)["code"]
-        // APIC uses access token
-        let code = self.parametersFromQueryString(url?.query)["access_token"]
+        let code = self.parametersFromQueryString(url?.query)["code"]
         // if exists perform the exchange
-        print("Extract Code \(code)")
         if (code != nil) {
             self.exchangeAuthorizationCodeForAccessToken(code!, completionHandler: completionHandler)
             // update state
@@ -378,7 +350,7 @@ public class OAuth2Module: AuthzModule {
     }
 
     deinit {
-        //self.stopObserving()
+        self.stopObserving()
     }
 
     func stopObserving() {

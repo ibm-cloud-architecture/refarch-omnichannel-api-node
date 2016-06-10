@@ -125,6 +125,31 @@ public class ApicOAuth2Module: OAuth2Module {
         completionHandler(accessToken, nil)
     }
     
+    
+    override func extractCode(notification: NSNotification, completionHandler: (AnyObject?, NSError?) -> Void) {
+        print("Extract Access token")
+        let url: NSURL? = (notification.userInfo as! [String: AnyObject])[UIApplicationLaunchOptionsURLKey] as? NSURL
+        
+        print("Extract Url \(url)")
+        // extract the code from the URL
+        //let code = self.parametersFromQueryString(url?.query)["code"]
+        // APIC uses access token
+        let code = self.parametersFromQueryString(url?.query)["access_token"]
+        // if exists perform the exchange
+        print("Extract Code \(code)")
+        if (code != nil) {
+            self.exchangeAuthorizationCodeForAccessToken(code!, completionHandler: completionHandler)
+            // update state
+            state = .AuthorizationStateApproved
+        } else {
+            
+            let error = NSError(domain:AGAuthzErrorDomain, code:0, userInfo:["NSLocalizedDescriptionKey": "User cancelled authorization."])
+            completionHandler(nil, error)
+        }
+        // finally, unregister
+        self.stopObserving()
+    }
+    
     /**
      Return any authorization fields.
      
