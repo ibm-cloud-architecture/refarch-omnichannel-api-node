@@ -36,10 +36,10 @@ class AddReviewController: UIViewController, UITextViewDelegate {
         let appDelegate : AppDelegate = AppDelegate().sharedInstance()
         let userDefaults = appDelegate.userDefaults as? NSUserDefaults
         
-        //var reviewRestUrl: String = appDelegate.userDefaults.objectForKey("reviewRestUrl") as! String
+        var reviewRestUrl: String = appDelegate.userDefaults.objectForKey("reviewRestUrl") as! String
         
         //For temp APIC testing
-        var reviewRestUrl: String = "https://api.us.apiconnect.ibmcloud.com/gangchenusibmcom-dev/inventory-catalog"
+        //var reviewRestUrl: String = "https://api.us.apiconnect.ibmcloud.com/gangchenusibmcom-dev/inventory-catalog"
         
         
         reviewRestUrl += "/api/reviews"

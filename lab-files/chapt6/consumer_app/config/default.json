@@ -8,12 +8,12 @@
   "API-Server": {
     "protocol": "https",
     "host": "api.us.apiconnect.ibmcloud.com",
-    "org": "aseriyusibmcom-redbooks",
-    "catalog": "inventory-catalog"
+    "org": "gangchenusibmcom-apic",
+    "catalog": "apicstore-catalog"
   },
   "APIs": {
     "inventory": {
-      "base_path": "/inventory",
+      "base_path": "/api",
       "require": [
 //        "client_id",
 //        "client_secret",

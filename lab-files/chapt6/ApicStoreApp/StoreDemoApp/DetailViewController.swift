@@ -140,9 +140,13 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate, UI
         let review =  reviewList[indexPath.row]
         
         // Configure the cell with the Item
-        cell.name.text = review.name
-        cell.rating.rating = Double(review.itemRating) 
-        cell.comments.text = review.comments
+        if(review.name != "")
+        {
+            cell.name.text = review.name
+            cell.rating.rating = Double(review.itemRating)
+            cell.comments.text = review.comments
+                                }
+                                
 
         return cell
         

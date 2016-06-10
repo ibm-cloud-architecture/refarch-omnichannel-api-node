@@ -191,7 +191,7 @@ x-ibm-configuration:
   properties:
     TARGET_HOST:
       value: >-
-        https://apiconnect-7d1ac428-ff1f-4cc7-8a05-7534d6e400e2.aseriyusibmcom-redbooks.apic.mybluemix.net
+        https://apiconnect-2109e85c-2f0b-4323-a37e-dc6f9ea46fdb.gangchenusibmcom-apic.apic.mybluemix.net
       description: ''
       encoded: false
 externalDocs:
