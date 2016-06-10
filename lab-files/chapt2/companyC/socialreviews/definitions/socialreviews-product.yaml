@@ -11,6 +11,8 @@ info:
 apis:
   socialreviews:
     $ref: socialreviews.yaml
+  apic-oauth-provider:
+    $ref: apic-oauth-provider_1.0.0.yaml
 visibility:
   view:
     type: public
