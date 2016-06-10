@@ -123,7 +123,6 @@ public class Http {
     public func request(method: HttpMethod, path: String, parameters: [String: AnyObject]? = nil, credential: NSURLCredential? = nil, responseSerializer: ResponseSerializer? = nil, completionHandler: CompletionBlock) {
         let block: () -> Void =  {
             let finalOptURL = self.calculateURL(self.baseURL, url: path)
-            print("Inventory request URL \(finalOptURL)")
             guard let finalURL = finalOptURL else {
                 let error = NSError(domain: "AeroGearHttp", code: 0, userInfo: [NSLocalizedDescriptionKey: "Malformed URL"])
                 completionHandler(nil, error)
@@ -133,23 +132,15 @@ public class Http {
             var request: NSURLRequest
             var task: NSURLSessionTask?
             var delegate: TaskDataDelegate
-            //var delegate: TaskDownloadDelegate
             // care for multipart request is multipart data are set
             if (self.hasMultiPartData(parameters)) {
-                print("Into hasMultipartData path")
                 request = self.requestSerializer.multipartRequest(finalURL, method: method, parameters: parameters, headers: self.authzModule?.authorizationFields())
-                //task = self.session.uploadTaskWithStreamedRequest(request)
-                task = self.session.downloadTaskWithRequest(request);
+                task = self.session.uploadTaskWithStreamedRequest(request)
                 delegate = TaskUploadDelegate()
-                //delegate = TaskDownloadDelegate()
             } else {
-                print("Into NO multipartData path")
-                print("HTTP Request parameter: \(parameters)")
-                print("Authorization field \(self.authzModule?.authorizationFields())")
                 request = self.requestSerializer.request(finalURL, method: method, parameters: parameters, headers: self.authzModule?.authorizationFields())
                 task = self.session.dataTaskWithRequest(request);
                 delegate = TaskDataDelegate()
-                //delegate = TaskDownloadDelegate()
             }
             
             delegate.completionHandler = completionHandler

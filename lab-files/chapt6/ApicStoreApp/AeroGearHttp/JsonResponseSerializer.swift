@@ -30,20 +30,18 @@ public class JsonResponseSerializer : ResponseSerializer {
     public var validateResponse: (NSURLResponse!, NSData) throws -> Void = { (response: NSURLResponse!, data: NSData) -> Void in
         var error: NSError! = NSError(domain: "AeroGearHttp", code: 0, userInfo: nil)
         let httpResponse = response as! NSHTTPURLResponse
-        print("the response is: \(httpResponse)")
         let dataAsJson: [String: AnyObject]?
         
         // validate JSON
         do {
             dataAsJson = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(rawValue: 0)) as? [String: AnyObject]
-           print("the data json is: \(dataAsJson)")
         } catch  _  {
             let userInfo = [NSLocalizedDescriptionKey: "Invalid response received, can't parse JSON" as NSString,
                 NetworkingOperationFailingURLResponseErrorKey: response]
             let customError = NSError(domain: HttpResponseSerializationErrorDomain, code: NSURLErrorBadServerResponse, userInfo: userInfo)
             throw customError;
         }
-        print("the response code is:  \(httpResponse.statusCode)")
+        
         if !(httpResponse.statusCode >= 200 && httpResponse.statusCode < 300) {
             var userInfo = [NSLocalizedDescriptionKey: NSHTTPURLResponse.localizedStringForStatusCode(httpResponse.statusCode),
                 NetworkingOperationFailingURLResponseErrorKey: response]

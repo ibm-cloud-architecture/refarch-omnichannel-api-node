@@ -61,7 +61,7 @@ public class JsonRequestSerializer:  HttpRequestSerializer {
                     request.addValue(val, forHTTPHeaderField: key)
                 }
             }
-            print("The request object is: \(request)")
+
             return request
         }
     }
