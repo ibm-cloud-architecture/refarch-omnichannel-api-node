@@ -12,7 +12,6 @@
 		832CBC631CFEA27600601D5C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 832CBC621CFEA27600601D5C /* Assets.xcassets */; };
 		832CBC661CFEA27600601D5C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 832CBC641CFEA27600601D5C /* LaunchScreen.storyboard */; };
 		832CBC6E1CFF3BC200601D5C /* ItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832CBC6D1CFF3BC200601D5C /* ItemsViewController.swift */; };
-		832CBC701CFF431200601D5C /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832CBC6F1CFF431200601D5C /* Item.swift */; };
 		83D911821CFF88AC00AD98E3 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D911811CFF88AC00AD98E3 /* ItemCell.swift */; };
 		83D911841CFF9ACB00AD98E3 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D911831CFF9ACB00AD98E3 /* DetailViewController.swift */; };
 		83D911881CFFC54D00AD98E3 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D911871CFFC54D00AD98E3 /* Review.swift */; };
@@ -40,6 +39,7 @@
 		83D911B91D00815700AD98E3 /* TrustedPersistantOAuth2Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D911A21D00815700AD98E3 /* TrustedPersistantOAuth2Session.swift */; };
 		83D911BA1D00815700AD98E3 /* UntrustedMemoryOAuth2Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D911A31D00815700AD98E3 /* UntrustedMemoryOAuth2Session.swift */; };
 		83D911BB1D00815700AD98E3 /* CosmosDistrib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D911A51D00815700AD98E3 /* CosmosDistrib.swift */; };
+		8850F8E91D0B79D70038924E /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8850F8E81D0B79D70038924E /* Item.swift */; };
 		88BA54591D00C4030013A68F /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 88BA54581D00C4030013A68F /* Config.plist */; };
 		88BA545B1D06640E0013A68F /* ApicConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BA545A1D06640E0013A68F /* ApicConfig.swift */; };
 		88BE50891D066AC30094A262 /* ApicOAuth2Module.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88BE50881D066AC30094A262 /* ApicOAuth2Module.swift */; };
@@ -53,7 +53,6 @@
 		832CBC651CFEA27600601D5C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		832CBC671CFEA27600601D5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		832CBC6D1CFF3BC200601D5C /* ItemsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemsViewController.swift; sourceTree = "<group>"; };
-		832CBC6F1CFF431200601D5C /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Item.swift; path = ../Item.swift; sourceTree = "<group>"; };
 		83D911811CFF88AC00AD98E3 /* ItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
 		83D911831CFF9ACB00AD98E3 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		83D911871CFFC54D00AD98E3 /* Review.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
@@ -81,6 +80,7 @@
 		83D911A21D00815700AD98E3 /* TrustedPersistantOAuth2Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrustedPersistantOAuth2Session.swift; sourceTree = "<group>"; };
 		83D911A31D00815700AD98E3 /* UntrustedMemoryOAuth2Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UntrustedMemoryOAuth2Session.swift; sourceTree = "<group>"; };
 		83D911A51D00815700AD98E3 /* CosmosDistrib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CosmosDistrib.swift; sourceTree = "<group>"; };
+		8850F8E81D0B79D70038924E /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		88BA54581D00C4030013A68F /* Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
 		88BA545A1D06640E0013A68F /* ApicConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApicConfig.swift; sourceTree = "<group>"; };
 		88BE50881D066AC30094A262 /* ApicOAuth2Module.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApicOAuth2Module.swift; sourceTree = "<group>"; };
@@ -119,12 +119,12 @@
 		832CBC5A1CFEA27600601D5C /* ApicStoreApp */ = {
 			isa = PBXGroup;
 			children = (
+				8850F8E81D0B79D70038924E /* Item.swift */,
 				88BA54551D00C3A10013A68F /* Supporting Files */,
 				832CBC5B1CFEA27600601D5C /* AppDelegate.swift */,
 				832CBC5F1CFEA27600601D5C /* Main.storyboard */,
 				832CBC621CFEA27600601D5C /* Assets.xcassets */,
 				832CBC641CFEA27600601D5C /* LaunchScreen.storyboard */,
-				832CBC6F1CFF431200601D5C /* Item.swift */,
 				832CBC6D1CFF3BC200601D5C /* ItemsViewController.swift */,
 				83D911811CFF88AC00AD98E3 /* ItemCell.swift */,
 				83D911831CFF9ACB00AD98E3 /* DetailViewController.swift */,
@@ -134,8 +134,7 @@
 				88BA545A1D06640E0013A68F /* ApicConfig.swift */,
 				88BE50881D066AC30094A262 /* ApicOAuth2Module.swift */,
 			);
-			name = ApicStoreApp;
-			path = StoreDemoApp;
+			path = ApicStoreApp;
 			sourceTree = "<group>";
 		};
 		83D9118D1D00815700AD98E3 /* AeroGearHttp */ = {
@@ -206,7 +205,7 @@
 			dependencies = (
 			);
 			name = ApicStoreApp;
-			productName = StoreDemoApp;
+			productName = ApicStoreApp;
 			productReference = 832CBC581CFEA27600601D5C /* ApicStoreApp.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -268,7 +267,6 @@
 				83D911B31D00815700AD98E3 /* FacebookOAuth2Module.swift in Sources */,
 				83D911881CFFC54D00AD98E3 /* Review.swift in Sources */,
 				88BA545B1D06640E0013A68F /* ApicConfig.swift in Sources */,
-				832CBC701CFF431200601D5C /* Item.swift in Sources */,
 				88BE50891D066AC30094A262 /* ApicOAuth2Module.swift in Sources */,
 				83D911B21D00815700AD98E3 /* DateUtils.swift in Sources */,
 				83D9118C1D00799700AD98E3 /* AddReviewController.swift in Sources */,
@@ -283,6 +281,7 @@
 				83D911B71D00815700AD98E3 /* OAuth2WebViewController.swift in Sources */,
 				83D911AF1D00815700AD98E3 /* Utils.swift in Sources */,
 				83D911AA1D00815700AD98E3 /* JsonResponseSerializer.swift in Sources */,
+				8850F8E91D0B79D70038924E /* Item.swift in Sources */,
 				83D9118A1CFFCF1200AD98E3 /* ReviewCell.swift in Sources */,
 				83D911BA1D00815700AD98E3 /* UntrustedMemoryOAuth2Session.swift in Sources */,
 				83D911B01D00815700AD98E3 /* AccountManager.swift in Sources */,
@@ -406,7 +405,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = StoreDemoApp/Info.plist;
+				INFOPLIST_FILE = ApicStoreApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ibm.ApicStoreApp;
@@ -418,7 +417,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = StoreDemoApp/Info.plist;
+				INFOPLIST_FILE = ApicStoreApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ibm.ApicStoreApp;

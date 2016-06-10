@@ -117,8 +117,9 @@ public class ApicOAuth2Module: OAuth2Module {
     override public func exchangeAuthorizationCodeForAccessToken(code: String, completionHandler: (AnyObject?, NSError?) -> Void) {
       
         let accessToken: String = code
+        
+        //TODO: Need to add support to retrieve and process refreshToken and refresh internal
         let refreshToken: String? = ""
-        //let expiration = 3600
         let exp: String? = "3600"
         let expRefresh: String? = "1200"
         self.oauth2Session.saveAccessToken(accessToken, refreshToken: refreshToken, accessTokenExpiration: exp, refreshTokenExpiration: expRefresh)
