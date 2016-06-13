@@ -138,7 +138,24 @@ public class Http {
                 task = self.session.uploadTaskWithStreamedRequest(request)
                 delegate = TaskUploadDelegate()
             } else {
-                request = self.requestSerializer.request(finalURL, method: method, parameters: parameters, headers: self.authzModule?.authorizationFields())
+                print("Authorization Header: \(self.authzModule?.authorizationFields())")
+                
+                
+                // TO DO: Remove this code from external library
+                // Customize the AeroGearHttp library to pass the clientId to HTTP request, 
+                // But not trigger the OAuth flow
+                // Ideally, this change should be outside of the library code, but couldn't find extension point
+                
+                if (self.authzModule != nil) {
+                    request = self.requestSerializer.request(finalURL, method: method, parameters: parameters, headers: self.authzModule?.authorizationFields())
+                }else
+                {
+                    let appDelegate : AppDelegate = AppDelegate().sharedInstance()
+                    let clientId: String = appDelegate.userDefaults.objectForKey("clientId") as! String
+                    
+                    request = self.requestSerializer.request(finalURL, method: method, parameters: parameters, headers: ["x-ibm-client-id":clientId])
+                }
+                
                 task = self.session.dataTaskWithRequest(request);
                 delegate = TaskDataDelegate()
             }

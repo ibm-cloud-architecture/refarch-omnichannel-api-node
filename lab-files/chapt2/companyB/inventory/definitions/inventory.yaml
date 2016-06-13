@@ -169,7 +169,7 @@ securityDefinitions:
     name: X-IBM-Client-Secret
     type: apiKey
 security:
-  - {}
+  - clientIdHeader: []
 x-ibm-configuration:
   testable: true
   enforced: true

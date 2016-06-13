@@ -34,7 +34,7 @@ class AddReviewController: UIViewController, UITextViewDelegate {
      
         //Prepare REST call to APIC
         let appDelegate : AppDelegate = AppDelegate().sharedInstance()
-        let userDefaults = appDelegate.userDefaults as? NSUserDefaults
+        //let userDefaults = appDelegate.userDefaults as? NSUserDefaults
         
         var reviewRestUrl: String = appDelegate.userDefaults.objectForKey("reviewRestUrl") as! String
         
@@ -89,7 +89,7 @@ class AddReviewController: UIViewController, UITextViewDelegate {
             // Initiate the OAuth flow
             //let appDelegate : AppDelegate = AppDelegate().sharedInstance()
             var oAuthRestUrl: String = appDelegate.userDefaults.objectForKey("oAuthRestURL") as! String
-            oAuthRestUrl += "/gangchenusibmcom-dev/inventory-catalog/api/oauth"
+            oAuthRestUrl += "/api/oauth"
             print("OAuth REST endpoint is : \(oAuthRestUrl)")
             
             self.initOauth(oAuthRestUrl, parameters: nil)

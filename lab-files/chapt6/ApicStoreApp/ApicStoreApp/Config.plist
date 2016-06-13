@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>oAuthRestUrl</key>
-	<string>https://api.us.apiconnect.ibmcloud.com</string>
+	<string>https://api.us.apiconnect.ibmcloud.com/gangchenusibmcom-apic/inventory-catalog</string>
 	<key>clientId</key>
 	<string>261e40cc-4b1f-44a1-997d-93f6dfbff711</string>
 	<key>clientSecret</key>
