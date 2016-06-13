@@ -38,15 +38,18 @@ router.get('/stores/:zip', function (req, res) {
 
 function setShipCalcOptions(req, res) {
   var zip_code = req.params.zip;
+  console.log("Set ShipCalc Options");
 
-  var shipping_url = api_url.stringify({
+  /* var shipping_url = api_url.stringify({
     protocol: _apiServer.protocol,
     host: _apiServer.host,
     org: _apiServerOrg,
     cat: _apiServerCatalog,
     api: _apis.logistics.base_path,
     operation: "shipping?zip=" + zip_code
-  });
+  }); */
+
+  var shipping_url = "https://shipchargecalcrest-redbooks.mybluemix.net/api/shipcharge/amount?to=" + zip_code + "&from=10022"
 
   var options = {
     method: 'GET',
@@ -61,9 +64,9 @@ function setShipCalcOptions(req, res) {
   if (_apis.logistics.require.indexOf("client_secret") != -1) options.headers["X-IBM-Client-Secret"] = _myApp.client_secret;
 
   return new Promise(function (fulfill) {
-    
+
     // Get OAuth Access Token, if needed
-    if (_apis.logistics.require.indexOf("oauth") != -1) {
+  /*  if (_apis.logistics.require.indexOf("oauth") != -1) {
 
       // If already logged in, add token to request
       if (typeof session.oauth2token !== 'undefined') {
@@ -78,20 +81,34 @@ function setShipCalcOptions(req, res) {
       }
 
     }
-    else fulfill({
+    else
+    {
+      //console("Return response: ");
+      fulfill({
+        options: options,
+        res: res
+      });
+    }
+    */
+    console.log("Return SetShipCacl" + JSON.stringify(options) + JSON.stringify(res));
+    fulfill({
       options: options,
       res: res
     });
+
   });
 
 }
 
 function submitCalcShipReq(function_input) {
+  console.log("Submit Calc Ship Rate");
+
   var options = function_input.options;
   var res = function_input.res;
 
   http.request(options)
     .then(function (data) {
+      console.log("Response Data" + data);
       res.json(data);
     })
     .fail(function (err) {

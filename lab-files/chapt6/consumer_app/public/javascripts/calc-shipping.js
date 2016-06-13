@@ -17,7 +17,8 @@
       if (xhttp_getShippingRates.readyState == 4 && xhttp_getShippingRates.status == 200) {
         var ship_rates_section = document.getElementById('ship-rates');
         var ship_rates = JSON.parse(xhttp_getShippingRates.responseText);
-
+        console.log("Shipping result" + ship_rates);
+        
         ship_rates_section.innerHTML = "<div class='pure-g'>" +
           "<div class='pure-u-1'>" +
           "<div class='pure-u-1-3'>XYZ</div>" +
@@ -40,7 +41,7 @@
       }
     };
 
-    xhttp_getStoreLocation.onreadystatechange = function () {
+  /*  xhttp_getStoreLocation.onreadystatechange = function () {
       if (xhttp_getStoreLocation.readyState == 4 && xhttp_getStoreLocation.status == 200) {
         var local_store_section = document.getElementById('local-store');
         var stores = JSON.parse(xhttp_getStoreLocation.responseText);
@@ -52,13 +53,13 @@
           "</div>" +
           "</div>";
       }
-    };
+    }; */
 
     xhttp_getShippingRates.open("GET", "/logistics/shipping/" + zip_code.value, true);
     xhttp_getShippingRates.send();
 
-    xhttp_getStoreLocation.open("GET", "/logistics/stores/" + zip_code.value, true);
-    xhttp_getStoreLocation.send();
+    //xhttp_getStoreLocation.open("GET", "/logistics/stores/" + zip_code.value, true);
+    //xhttp_getStoreLocation.send();
   };
 
 }

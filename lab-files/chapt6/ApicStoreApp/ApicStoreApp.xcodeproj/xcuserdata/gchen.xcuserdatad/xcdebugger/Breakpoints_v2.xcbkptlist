@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AeroGearHttp/Http.swift"
-            timestampString = "486616834.216132"
+            timestampString = "487525428.595459"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "584"
-            endingLineNumber = "584"
+            startingLineNumber = "601"
+            endingLineNumber = "601"
             landmarkName = "calculateURL(_:url:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AeroGearHttp/Http.swift"
-            timestampString = "486616834.216132"
+            timestampString = "487525428.595459"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "146"
-            endingLineNumber = "146"
+            startingLineNumber = "163"
+            endingLineNumber = "163"
             landmarkName = "request(_:path:parameters:credential:responseSerializer:completionHandler:)"
             landmarkType = "5">
          </BreakpointContent>
