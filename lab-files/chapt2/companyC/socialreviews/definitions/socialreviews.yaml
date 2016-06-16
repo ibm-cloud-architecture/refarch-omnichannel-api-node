@@ -142,8 +142,21 @@ x-ibm-configuration:
         runtime-url: 'http://localhost:4001'
   assembly:
     execute:
+      - gatewayscript:
+          title: gatewayscript
+          source: |-
+            var reqUrl = apim.getvariable('request.uri');
+            var filterQuery = reqUrl.split('?')[1];
+
+            if(filterQuery || filterQuery !== '')
+            {
+                apim.setvariable('filterQuery', filterQuery);
+            }else
+            {
+                 apim.setvariable('filterQuery', "");
+            }
       - invoke:
-          target-url: $(TARGET_HOST)$(request.path)
+          target-url: $(TARGET_HOST)$(request.path)?$(filterQuery)
           tls-profile: 'client:Loopback-client'
   properties:
     TARGET_HOST:
@@ -151,6 +164,7 @@ x-ibm-configuration:
         https://apiconnect-bf31391c-c531-44b2-a97c-390363027165.gangchenusibmcom-apic.apic.mybluemix.net
       description: ''
       encoded: false
+  gateway: datapower-gateway
 externalDocs:
   description: Company C Documentation
   url: 'http://www.companyc.com'
