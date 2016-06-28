@@ -1,0 +1,36 @@
+product: 1.0.0
+info:
+  name: socialreviews
+  title: socialreviews
+  version: 1.0.0
+  description: |-
+    socialreviews application from
+    CompanyC
+  contact:
+    name: Admin
+    email: admin@companyc.com
+    url: 'http://www.companyc.com'
+  license:
+    url: 'http://www.companyc.com'
+apis:
+  socialreviews:
+    $ref: socialreviews.yaml
+visibility:
+  view:
+    type: public
+  subscribe:
+    type: authenticated
+plans:
+  Gold Plan:
+    title: Gold Plan
+    apis: {}
+    rate-limit:
+      value: unlimited
+    description: Gold Plan
+  Silver Plan:
+    title: Silver Plan
+    description: Silver Plan
+    approval: false
+    rate-limit:
+      value: 1000/1hour
+      hard-limit: false

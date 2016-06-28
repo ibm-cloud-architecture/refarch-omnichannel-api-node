@@ -1,2 +1,0 @@
-catalog: 'apic-catalog://us.apiconnect.ibmcloud.com/orgs/gangchenusibmcom-apic/catalogs/apicstore-catalog'
-app: 'apic-app://us.apiconnect.ibmcloud.com/orgs/centusibmcom-apicdev/apps/inventory-loopback-app'

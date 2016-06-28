@@ -1,2 +1,0 @@
-app: 'apic-app://us.apiconnect.ibmcloud.com/orgs/gangchenusibmcom-apic/apps/review-loopback-app'
-catalog: 'apic-catalog://us.apiconnect.ibmcloud.com/orgs/gangchenusibmcom-apic/catalogs/apicstore-catalog'

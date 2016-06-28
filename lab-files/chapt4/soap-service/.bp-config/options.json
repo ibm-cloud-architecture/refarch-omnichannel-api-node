@@ -1,4 +1,0 @@
-{
-	"WEBDIR": "service",
-	"COMPOSER_VENDOR_DIR": "{BUILD_DIR}/vendor"
-}
