@@ -1,2 +1,2 @@
-# apic-workstream
-Internal git repo for APIC workstream
+# OmniChannel Architecture for Mobile and Web
+Internal git repo for workstream
