@@ -3,10 +3,12 @@ info:
   name: inventory
   title: inventory
   version: 1.0.0
-  description: Inventory Product for Company B
+  description: inventory application from CompanyB
   contact:
     name: Admin
     email: admin@companyb.com
+    url: 'http://www.companyb.com'
+  license:
     url: 'http://www.companyb.com'
 apis:
   inventory:
@@ -17,10 +19,16 @@ visibility:
   subscribe:
     type: authenticated
 plans:
-  SilverPlan:
+  Gold Plan:
+    title: Gold Plan
+    apis: {}
+    rate-limit:
+      value: unlimited
+    description: Gold Plan
+  Silver Plan:
     title: Silver Plan
     description: Silver Plan
     approval: false
     rate-limit:
       value: 1000/1hour
-      hard-limit: true
+      hard-limit: false

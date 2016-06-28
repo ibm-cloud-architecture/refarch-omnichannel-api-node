@@ -19,7 +19,7 @@
     "itemId": {
       "type": "number",
       "required": true,
-      "description": "Item ID"
+      "description": "Item Id"
     },
     "rating": {
       "type": "number",
@@ -29,12 +29,12 @@
     "reviewer_email": {
       "type": "string",
       "required": false,
-      "description": "reviewers email"
+      "description": "reviewer email"
     },
     "reviewer_name": {
       "type": "string",
       "required": false,
-      "description": "reviewers name"
+      "description": "reviewer name"
     }
   },
   "validations": [],

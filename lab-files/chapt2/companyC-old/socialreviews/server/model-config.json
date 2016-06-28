@@ -13,12 +13,8 @@
       "./mixins"
     ]
   },
-  "item": {
+  "review": {
     "dataSource": "memdb",
-    "public": true
-  },
-  "container": {
-    "dataSource": "storage",
     "public": true
   }
 }

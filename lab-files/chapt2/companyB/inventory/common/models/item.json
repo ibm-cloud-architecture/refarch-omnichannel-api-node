@@ -6,41 +6,41 @@
     "validateUpsert": true
   },
   "properties": {
+    "description": {
+      "type": "string",
+      "required": true,
+      "description": "Item description"
+    },
     "id": {
       "type": "number",
       "id": true,
       "required": true,
       "description": "Item ID"
     },
-    "name": {
+    "img": {
       "type": "string",
       "required": true,
-      "description": "Item Name"
-    },
-    "description": {
-      "type": "string",
-      "required": true,
-      "description": "Item Description"
+      "description": "Item image location"
     },
     "img_alt": {
       "type": "string",
       "required": true,
-      "description": "Item Image Title"
+      "description": "Item image title"
     },
-    "img": {
+    "name": {
       "type": "string",
       "required": true,
-      "description": "Item Image Location"
+      "description": "Item name"
     },
     "price": {
       "type": "number",
       "required": true,
-      "description": "Item Price"
+      "description": "Item price"
     },
     "rating": {
       "type": "number",
       "required": false,
-      "description": "Item Rating"
+      "description": "Item rating"
     }
   },
   "validations": [],

@@ -4,7 +4,7 @@
   "main": "server/server.js",
   "scripts": {
     "start": "node .",
-    "pretest": "eslint .",
+    "pretest": "jshint .",
     "posttest": "nsp check"
   },
   "dependencies": {
@@ -17,7 +17,7 @@
     "serve-favicon": "^2.0.1"
   },
   "devDependencies": {
-    "eslint": "^2.5.3",
+    "jshint": "^2.5.6",
     "nsp": "^2.1.0"
   },
   "repository": {

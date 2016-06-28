@@ -1,24 +1,24 @@
 paths:
-  /review/oauth:
+  /reviews/oauth:
     get:
       responses:
         '200':
-          description: 200 OK
+          description: Successful Response
+      summary: Oauth Trigger API
       operationId: review.oauth
-      summary: Oauth trigger API
   /reviews/counter:
     get:
       responses:
         '200':
-          description: 200 OK
-      summary: Find the count of reviews for an item”
+          description: Request was successful
       operationId: review.counter
+      summary: Find the count of reviews for each item
   /reviews/avgrating:
     get:
       responses:
         '200':
-          description: 200 OK
-      summary: Find average rating of an item
+          description: Request was successful
+      summary: Find Average rating of the item
       operationId: review.avgrating
   /reviews:
     post:
@@ -59,6 +59,7 @@ paths:
             items:
               $ref: '#/definitions/review'
       deprecated: false
+      security: []
 definitions:
   review:
     properties:
@@ -70,7 +71,7 @@ definitions:
         type: string
         format: date
       itemId:
-        description: Item ID
+        description: Item Id
         type: number
         format: double
       rating:
@@ -78,10 +79,10 @@ definitions:
         type: number
         format: double
       reviewer_email:
-        description: reviewers email
+        description: reviewer email
         type: string
       reviewer_name:
-        description: reviewers name
+        description: reviewer name
         type: string
       id:
         type: number
@@ -98,10 +99,6 @@ info:
     name: Admin
     email: admin@companyc.com
     url: 'http://www.companyc.com'
-  license:
-    url: 'http://www.companyc.com'
-    name: License Company C
-  termsOfService: License Company C
 schemes:
   - https
 host: $(catalog.host)
@@ -111,6 +108,14 @@ consumes:
 produces:
   - application/json
 securityDefinitions:
+  apic-oauth-provider:
+    type: oauth2
+    description: ''
+    flow: implicit
+    authorizationUrl: >-
+      https://api.us.apiconnect.ibmcloud.com/gangchenusibmcom-apic/apicstore-catalog/oauth20/authorize
+    scopes:
+      review: Allow user to pose comment/reviews to Social review API
   clientIdHeader:
     type: apiKey
     in: header
@@ -120,8 +125,9 @@ securityDefinitions:
     name: X-IBM-Client-Secret
     type: apiKey
 security:
-  - clientIdHeader: []
-    clientSecretHeader: []
+  - apic-oauth-provider:
+      - review
+    clientIdHeader: []
 x-ibm-configuration:
   testable: true
   enforced: true
@@ -141,12 +147,13 @@ x-ibm-configuration:
           source: |-
             var reqUrl = apim.getvariable('request.uri');
             var filterQuery = reqUrl.split('?')[1];
+
             if(filterQuery || filterQuery !== '')
             {
                 apim.setvariable('filterQuery', filterQuery);
             }else
             {
-                apim.setvariable('filterQuery', "");
+                 apim.setvariable('filterQuery', "");
             }
       - invoke:
           target-url: $(TARGET_HOST)$(request.path)?$(filterQuery)
@@ -154,9 +161,10 @@ x-ibm-configuration:
   properties:
     TARGET_HOST:
       value: >-
-        https://apiconnect-1c498c30-ecba-44ae-9fa9-09d5438e6825.rgupta1usibmcom-redbook.apic.mybluemix.net/
+        https://apiconnect-bf31391c-c531-44b2-a97c-390363027165.gangchenusibmcom-apic.apic.mybluemix.net
       description: ''
       encoded: false
   gateway: datapower-gateway
 externalDocs:
+  description: Company C Documentation
   url: 'http://www.companyc.com'
