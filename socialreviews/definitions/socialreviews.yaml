@@ -100,8 +100,8 @@ info:
     url: 'http://www.companyc.com'
   license:
     url: 'http://www.companyc.com'
-    name: License Company C
-  termsOfService: License Company C
+    name: companyC license
+  termsOfService: CompanyC terms of service
 schemes:
   - https
 host: $(catalog.host)
@@ -121,7 +121,6 @@ securityDefinitions:
     type: apiKey
 security:
   - clientIdHeader: []
-    clientSecretHeader: []
 x-ibm-configuration:
   testable: true
   enforced: true
@@ -154,7 +153,7 @@ x-ibm-configuration:
   properties:
     TARGET_HOST:
       value: >-
-        https://apiconnect-1c498c30-ecba-44ae-9fa9-09d5438e6825.rgupta1usibmcom-redbook.apic.mybluemix.net/
+        https://apiconnect-1c498c30-ecba-44ae-9fa9-09d5438e6825.rgupta1usibmcom-redbook.apic.mybluemix.net
       description: ''
       encoded: false
   gateway: datapower-gateway

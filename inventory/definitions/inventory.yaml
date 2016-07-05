@@ -165,6 +165,10 @@ info:
   x-ibm-name: inventory
   version: 1.0.0
   title: inventory
+  termsOfService: CompanyB terms of service
+  license:
+    name: companyB license
+    url: 'http://www.companyb.com'
 schemes:
   - https
 host: $(catalog.host)
@@ -184,7 +188,6 @@ securityDefinitions:
     type: apiKey
 security:
   - clientIdHeader: []
-    clientSecretHeader: []
 x-ibm-configuration:
   testable: true
   enforced: true
@@ -205,7 +208,7 @@ x-ibm-configuration:
   properties:
     TARGET_HOST:
       value: >-
-        https://apiconnect-0203ebfb-9ff5-495c-81f6-267561ee14bc.rgupta1usibmcom-redbook.apic.mybluemix.net/
+        https://apiconnect-0203ebfb-9ff5-495c-81f6-267561ee14bc.rgupta1usibmcom-redbook.apic.mybluemix.net
       description: ''
       encoded: false
   gateway: datapower-gateway

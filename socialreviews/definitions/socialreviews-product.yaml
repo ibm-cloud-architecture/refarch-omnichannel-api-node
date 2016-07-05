@@ -11,7 +11,9 @@ info:
     email: admin@companyc.com
     url: 'http://www.companyc.com'
   license:
+    name: companyC license
     url: 'http://www.companyc.com'
+  termsOfService: CompanyC terms of service
 apis:
   socialreviews:
     $ref: socialreviews.yaml
@@ -21,15 +23,15 @@ visibility:
   subscribe:
     type: authenticated
 plans:
-  Gold Plan:
-    title: Gold Plan
+  Gold-Plan:
+    title: Gold-Plan
     apis: {}
     rate-limit:
       value: unlimited
-    description: Gold Plan
-  Silver Plan:
-    title: Silver Plan
-    description: Silver Plan
+    description: Gold-Plan
+  Silver-Plan:
+    title: Silver-Plan
+    description: Silver-Plan
     approval: false
     rate-limit:
       value: 1000/1hour
