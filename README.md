@@ -129,3 +129,93 @@ You will use the APIC CLI to do the deployment.
 4. Now in the Bluemix control panel you will see both applications running:
 
 ![API Running](static/imgs/bluemix_12.png?raw=true)
+
+
+#### Publish the APIs
+
+With IBM API Connect you publish the APIs to a specific Catalog. Start by visiting the ApicStore catalog endpoint you
+created earlier.
+
+Logon to Bluemix API manager console, navigate to Dashboard. Click the “link” and copy the url from the popup window. you will need that later.
+
+![API Running](static/imgs/bluemix_13.png?raw=true)
+
+
+1. CD Into the inventory directory in the GIT repository.
+2. Set the API publishing endpoint by copying and pasting the catalog endpoint you obtained earlier. It should look something like this:
+```
+apic config:set catalog=apic-catalog://us.apiconnect.ibmcloud.com/orgs/gangchenusibm.com-apic/catalogs/apicstore-catalog
+```
+3. Publish the inventory API product with: ```apic publish definitions/inventory-product.yaml```
+4. Now publish the socialreview APIs, start by CD'ing to the socialreview directory.
+5. Set the API publishing endpoint by copying the catalog information again. A sample: ``` $ apic config:set catalog=apic-catalog://us.apiconnect.ibmcloud.com/orgs/gangchenusibm.com-apic/catalogs/apicstore-catalog```
+6. Publish the socialreviews API product with ```apic publish definitions/socialreviews-product.yaml```
+7. Now launch the Bluemix API management console by navigating to "Dashboard" from the top navigation pane. Click "ApicStore Catalog",
+you should see both Inventory and SocialReviews products in the state of Published in Bluemix.
+![API Running](static/imgs/bluemix_14.png?raw=true)
+
+In the sample application, the API Connect OAuth provider relies on a dummy authenticating application to validate user credentials.
+You have deployed a sample application and configured it already. If you would like to deploy your own authentication servivces follow this 
+section. Otherwiswe move to step 5.
+
+1. Update the Cloud Foundry definition file locted under the repositories' OAuth/authentication-app/ folder ( manifest.yml ).
+Update the name and host fields to a unique value. For example {Your bluemix ID}-authenticate.
+2. In a command line navigate to the OAuth/authenticaiton-app folder.
+3. Login to your Bluemix account ```cf login```, select your Bluemix organization and space ( can be found in your User Profile in the web portal.)
+4. Deploy the app with: ```cf push```
+
+### Step 5: Subscribe to the API in the Developer Portal
+
+The Developer Portal enables API providers to build a customized developer portal for their application developers. It also provides
+the interface for API consumers to discover APIs and subscribe to a consumption plan by which the API is consumed in either the Mobile
+or traditional Web application.
+
+1. Open the API Connect Developer Portal. You will need to open your Portal URL. Obtain it by navigating to the ApicStore catalog. Click "Settings", then "Portal".
+![API Running](static/imgs/bluemix_15.png?raw=true)
+2. Open the API Connnect Portal in another browser window. You should see the portal home page with both the inventory and the socialreviews APIs highlighted.
+3. Click "Create an account" from the upper right menu bar.
+4. In the create an account wiard, enter the credentials of your Bluemix login ID and MobileWeb-App-Dev as your developer organization. Finally click "Create new account"
+5. In your developer portal, click "Login".
+6. Click on the menu tab "Apps" on top. Click on the link to "Register a new Application."
+![API Running](static/imgs/bluemix_16.png?raw=true)
+7. Enter the fields of "Title" and "Description". Enter "org.apic://example.com" for the OAuth URI redirection page as shown below then click submit.
+![API Running](static/imgs/bluemix_17.png?raw=true) ( Store the client ID, you will need it later)
+8. In the developer portal, navigate to Apps -> MobileWeb-App-Dev. Below the application, you will see a link to take you to the 
+currently available APIs. CLick on that.
+9. Click on the Inventory ( 1.0.0 ) API.
+10. Click "Subscribe" in the API page.
+![API Running](static/imgs/bluemix_18.png?raw=true)
+11. Subscribe to the social review API as well ( you can choose the silver or gold plan)
+12. GO back to the Apps -> MobileWeb-App-Dev page, you will see that both APIs are subscriped in your Application page.
+
+### Step 6: Run the MobileiOS Application
+
+Note this section requires an Apple computer running MacOS with Apple XCode IDE installed.
+
+1. In Finder, navigate to the folder ApicStoreApp in the GIT repository.
+2. Double click the "ApicStoreApp.xcodeproj" file to open the iOS project in XCode.
+3. You need to specify the API endpoint configuration for your Bluemix API Connect deployment.  Edit the ApiStoreApp / Supporting Files / Config.plist file. The Config.plist file contains all of the API endpoint URLs as well as the clientId registered earlier in Developer Portal. Any changes to the API endpoint urls can be made in this file. 
+![API Running](static/imgs/bluemix_19.png?raw=true)
+4. Click the "Play" button in the upper left corner to run the application in a simulated iPhone ( be sure to select iphone6 or 6plus)
+
+Feel free to play around and explore the mobile inventory application.
+
+### Step 7: Run the Web Application.
+
+The consumer Web app provides the basic function to allow user to browse the  Inventory items. The sample web app is built as a Node.js application that uses Express framework and Jade templates. 
+
+To set it up:
+
+1. Navigate to the web app root folder in the git repository (StoreWebApp)
+2. Edit the config/default.json file to configure the API endpoints
+    * client_id
+    * host 
+    * org
+    ![API Running](static/imgs/bluemix_20.png?raw=true)
+3. CD to the StoreWebApp directory.
+4. Install the node modules with ```npn install```
+5. Run the web app with ```npm start```
+
+
+That's it!
+
