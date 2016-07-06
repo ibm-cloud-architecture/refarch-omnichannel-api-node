@@ -211,7 +211,7 @@ To set it up:
     * client_id
     * host 
     * org
-    ![API Running](static/imgs/bluemix_20.png?raw=true)
+    ![API Running](static/imgs/bluemix_23.png?raw=true)
 3. CD to the StoreWebApp directory.
 4. Install the node modules with ```npn install```
 5. Run the web app with ```npm start```
