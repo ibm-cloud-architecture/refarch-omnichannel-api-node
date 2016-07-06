@@ -119,3 +119,12 @@ You will use the APIC CLI to do the deployment.
 4. Deploy the inventory LoopBack application with: ```apic apps:publish```
 5. If you login to your Bluemix control panel you will see the new application is currently running:
 ![API Running](static/imgs/bluemix_11.png?raw=true)
+
+
+#### Deploy the SocialReview Application.
+
+1. CD into the socialreview folder in the GIT repository.
+2. Configure the deployment target with: ```apic config:set app=apic-app://us.apiconnect.ibmcloud.com/orgs/{bluemixOrg}-{bluemixSpace}/apps/socialreview-loopback-app```
+3. Deploy with: ```apic apps:publish```
+4. Now in the Bluemix control panel you will see both applications running:
+![API Running](static/imgs/bluemix_12.png?raw=true)
