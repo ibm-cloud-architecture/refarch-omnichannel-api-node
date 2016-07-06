@@ -6,6 +6,8 @@ paths:
           description: 200 OK
       operationId: review.oauth
       summary: Oauth trigger API
+      security:
+        - clientIdHeader: []
   /reviews/counter:
     get:
       responses:
@@ -59,6 +61,8 @@ paths:
             items:
               $ref: '#/definitions/review'
       deprecated: false
+      security:
+        - clientIdHeader: []
 definitions:
   review:
     properties:
@@ -100,8 +104,8 @@ info:
     url: 'http://www.companyc.com'
   license:
     url: 'http://www.companyc.com'
-    name: License Company C
-  termsOfService: License Company C
+    name: companyC license
+  termsOfService: CompanyC terms of service
 schemes:
   - https
 host: $(catalog.host)
@@ -111,6 +115,14 @@ consumes:
 produces:
   - application/json
 securityDefinitions:
+  apic-oauth-provider:
+    type: oauth2
+    description: ''
+    flow: implicit
+    authorizationUrl: >-
+      https://api.us.apiconnect.ibmcloud.com/rgupta1usibmcom-redbook/apicstore-catalog/oauth20/authorize
+    scopes:
+      review: Allow user to pose comment/reviews to Social review API
   clientIdHeader:
     type: apiKey
     in: header
@@ -121,7 +133,8 @@ securityDefinitions:
     type: apiKey
 security:
   - clientIdHeader: []
-    clientSecretHeader: []
+    apic-oauth-provider:
+      - review
 x-ibm-configuration:
   testable: true
   enforced: true
@@ -154,7 +167,7 @@ x-ibm-configuration:
   properties:
     TARGET_HOST:
       value: >-
-        https://apiconnect-1c498c30-ecba-44ae-9fa9-09d5438e6825.rgupta1usibmcom-redbook.apic.mybluemix.net/
+        https://apiconnect-1c498c30-ecba-44ae-9fa9-09d5438e6825.rgupta1usibmcom-redbook.apic.mybluemix.net
       description: ''
       encoded: false
   gateway: datapower-gateway

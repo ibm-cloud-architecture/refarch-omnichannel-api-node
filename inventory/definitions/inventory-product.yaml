@@ -10,6 +10,8 @@ info:
     url: 'http://www.companyb.com'
   license:
     url: 'http://www.companyb.com'
+    name: companyB license
+  termsOfService: companyB terms of service
 apis:
   inventory:
     $ref: inventory.yaml
@@ -19,15 +21,15 @@ visibility:
   subscribe:
     type: authenticated
 plans:
-  Gold Plan:
-    title: Gold Plan
+  Gold-Plan:
+    title: Gold-Plan
     apis: {}
     rate-limit:
       value: unlimited
-    description: Gold Plan
-  Silver Plan:
-    title: Silver Plan
-    description: Silver Plan
+    description: Gold-Plan
+  Silver-Plan:
+    title: Silver-Plan
+    description: Silver-Plan
     approval: false
     rate-limit:
       value: 1000/1hour

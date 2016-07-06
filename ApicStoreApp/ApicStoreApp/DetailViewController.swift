@@ -41,9 +41,29 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate, UI
         itemName.text = self.item.name
         itemPrice.text = "$\(self.item.price)"
         itemDescription.text = self.item.desc
-        let url = NSURL(string: self.item.image)
-        let data = NSData(contentsOfURL: url!)
-        itemImageDetail.image = UIImage(data: data!)
+        
+        let appDelegate : AppDelegate = AppDelegate().sharedInstance()
+        let itemRestUrl = appDelegate.userDefaults.objectForKey("itemRestUrl") as! String
+        
+        
+        let imageUrl = itemRestUrl + "/" + self.item.image
+        let request = NSMutableURLRequest(URL: NSURL(string: imageUrl)!)
+        
+        //Set the API clientId header
+        let clientId: String = appDelegate.userDefaults.objectForKey("clientId") as! String
+        request.setValue(clientId, forHTTPHeaderField: "x-ibm-client-id")
+        
+        var imageData: NSData!
+        // Using semaphore to force Sync call to get the image
+        let semaphore = dispatch_semaphore_create(0)
+        
+        try! NSURLSession.sharedSession().dataTaskWithRequest(request) { (responseData, _, _) -> Void in
+            imageData = responseData! //treat optionals properly
+            dispatch_semaphore_signal(semaphore)
+            }.resume()
+        
+        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
+        self.itemImageDetail.image = UIImage(data: imageData!)
         
     }
     
@@ -60,7 +80,6 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate, UI
         reviewRestUrl += "/api/reviews?filter={\"where\":{\"itemId\":\(self.item.id)}}"
         let finalreviewUrl = reviewRestUrl.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
         
-        print("Review REST endpoint is : \(reviewRestUrl)")
         //Set up REST framework
         self.http = Http()
         self.listReviews(finalreviewUrl, parameters: nil)
