@@ -53,3 +53,25 @@ sandbox has automatically been generated for you. ![API Info](static/imgs/bluemi
 7. Select the catalog and then in the Settings table and the Portal sub-tab.
 8. To setup a Portal that your consumers can use to explore your API, select the IBM Developer Portal radio button. This will
 provision a portal for you. You should receive a message like the one below. ![API Info](static/imgs/bluemix_9.png?raw=true)
+9. Once the new Developer Portal has been created, you will receive an email.
+
+
+#### Installing the IBM API Connect Developer Toolkit
+
+The IBM API Connect Developer Toolking provides both the API Designer UI and a CLI that developers can use to develop APIs
+and LoopBack applications, as welll as the tools to publish them to the IBM API Connect runtime. 
+
+Before you get started, you will need to install Node.js version 0.12 or version 4.x, follow the link below for more information details.
+[https://www.ibm.com/support/knowledgecenter/en/SSFS6T/com.ibm.apic.toolkit.doc/tapim_cli_install.html](https://www.ibm.com/support/knowledgecenter/en/SSFS6T/com.ibm.apic.toolkit.doc/tapim_cli_install.html)
+
+To install the APIC Connect CLI:
+
+```
+npm install -g apiconnect
+apic -version
+```
+
+That should install the tool and print the version number after the last command.
+
+
+### Step 2: Obtaining the Application Code
