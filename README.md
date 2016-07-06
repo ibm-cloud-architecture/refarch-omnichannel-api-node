@@ -47,3 +47,5 @@ environment. To install it, follow [these instructions](https://console.ng.bluem
 2. Select the API Connect service as shown below. ![API Info](static/imgs/bluemix_2.png?raw=true)
 3. Select the free Essentials plan for this demo.
 4. After the API Connect service is created, launch the API Connect service by clicking "Launch API Manager" ![API Info](static/imgs/bluemix_3.png?raw=true)
+5.  In the API Manager page, navigate to the API Connect Dashboard and select "Add Catalog" at the top left. You may notice that a 
+sandbox has automatically been generated for you. ![API Info](static/imgs/bluemix_4.png?raw=true)
