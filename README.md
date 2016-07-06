@@ -75,3 +75,28 @@ That should install the tool and print the version number after the last command
 
 
 ### Step 2: Obtaining the Application Code
+
+
+First clone the GIT repository locally:
+
+```
+git clone git@github.com:ibm-solution-engineering/refarch-omnichannel-api-node.git
+```
+
+
+There are 5 main folders inside this repository:
+
+inventory
+* Has loopback Node.js application for the inventory items as well as the API definition that will be used by the Web and Mobile application. It has an in-memory database included.
+socialreview
+* Node.js application for the social review function as well as the API definition that will be used by the Web and Mobile application.
+OAuth
+* Contains artefacts to support OAuth in sample application
+ApicStoreApp
+* The iOS native application implemented in Swift 2.0
+StoreWebApp
+* The Web application consuming the same set of API
+
+### Step 3: Deploy the LoopBack Applications and Publish the API to Bluemix.
+
+
