@@ -86,15 +86,19 @@ git clone git@github.com:ibm-solution-engineering/refarch-omnichannel-api-node.g
 
 There are 5 main folders inside this repository:
 
-inventory
+**inventory**
 * Has loopback Node.js application for the inventory items as well as the API definition that will be used by the Web and Mobile application. It has an in-memory database included.
-socialreview
+
+**socialreview**
 * Node.js application for the social review function as well as the API definition that will be used by the Web and Mobile application.
-OAuth
+
+**OAuth**
 * Contains artefacts to support OAuth in sample application
-ApicStoreApp
+
+**ApicStoreApp**
 * The iOS native application implemented in Swift 2.0
-StoreWebApp
+
+**StoreWebApp**
 * The Web application consuming the same set of API
 
 ### Step 3: Deploy the LoopBack Applications and Publish the API to Bluemix.
