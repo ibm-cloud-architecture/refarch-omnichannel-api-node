@@ -103,4 +103,19 @@ There are 5 main folders inside this repository:
 
 ### Step 3: Deploy the LoopBack Applications and Publish the API to Bluemix.
 
+There are 2 components that need to be deployed on Bluemix for API(backend):
 
+* The LoopBack Node.js application
+* The API definition and product
+
+You will use the APIC CLI to do the deployment.
+
+#### Deploy the LoopBack Application to Bluemix
+
+1. CD into the inventory directory in the GIT repository.
+2. Login to your Bluemix APIC environment with: ```apic login``` ( Server: us.apiconnect.ibmcloud.com, credentials: your IBM ID)
+3.  Configure the deployment target with:
+```apic config:set app=apic-app://us.apiconnect.ibmcloud.com/orgs/{bluemixOrg}-{bluemixSpace}/apps/inventory-loopback-app```
+4. Deploy the inventory LoopBack application with: ```apic apps:publish```
+5. If you login to your Bluemix control panel you will see the new application is currently running:
+![API Running](static/imgs/bluemix_11.png?raw=true)
