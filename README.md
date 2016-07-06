@@ -43,4 +43,7 @@ environment. To install it, follow [these instructions](https://console.ng.bluem
 
 #### Provision the API Connect Service
 
-1. Click on the Bluemix console and select API as shown in the figure below ![API Info](static/imgs/bluemix_1.png?raw=true)
+1. Click on the Bluemix console and select API as shown in the figure below. ![API Info](static/imgs/bluemix_1.png?raw=true)
+2. Select the API Connect service as shown below. ![API Info](static/imgs/bluemix_2.png?raw=true)
+3. Select the free Essentials plan for this demo.
+4. After the API Connect service is created, launch the API Connect service by clicking "Launch API Manager" ![API Info](static/imgs/bluemix_3.png?raw=true)
