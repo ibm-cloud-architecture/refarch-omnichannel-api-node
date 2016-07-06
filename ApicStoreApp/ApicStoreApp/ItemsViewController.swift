@@ -10,7 +10,8 @@ import UIKit
 
 class ItemsViewController: UITableViewController {
     
-     var http: Http!
+    var http: Http!
+    var itemRestUrl = ""
     
     var storeItems: [Item] = []
     
@@ -51,28 +52,46 @@ class ItemsViewController: UITableViewController {
         cell.nameLabel.text = item.name
         cell.priceLabel.text = "$\(item.price)"
         
-        // Used for Local mockup
-        let url = NSURL(string: item.image)
-        let data = NSData(contentsOfURL: url!)
-        cell.itemImage.image = UIImage(data: data!)
+        // Retrieve image from Server store
+        let imageUrl = self.itemRestUrl + "/" + item.image
+        let request = NSMutableURLRequest(URL: NSURL(string: imageUrl)!)
+        
+        //Set the API clientId header
+        let appDelegate : AppDelegate = AppDelegate().sharedInstance()
+        let clientId: String = appDelegate.userDefaults.objectForKey("clientId") as! String
+        request.setValue(clientId, forHTTPHeaderField: "x-ibm-client-id")
+                                
+        var imageData: NSData!
+        // Using semaphore to force Sync call to get the image
+        let semaphore = dispatch_semaphore_create(0)
+                                
+        try! NSURLSession.sharedSession().dataTaskWithRequest(request) { (responseData, _, _) -> Void in
+            imageData = responseData! //treat optionals properly
+            dispatch_semaphore_signal(semaphore)
+        }.resume()
+                                
+        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
+                                
+        cell.itemImage.image = UIImage(data: imageData)
 
         return cell
     
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         
         let appDelegate : AppDelegate = AppDelegate().sharedInstance()
-        var itemRestUrl: String = appDelegate.userDefaults.objectForKey("itemRestUrl") as! String
-        itemRestUrl += "/api/items"
-        print("Item REST endpoint is : \(itemRestUrl)")
+        self.itemRestUrl = appDelegate.userDefaults.objectForKey("itemRestUrl") as! String
+        let itemsEndpoint = self.itemRestUrl + "/api/items"
+        print("Item REST endpoint is : \(itemsEndpoint)")
         
         
         //Set up REST framework
         self.http = Http()
-        self.listInventory(itemRestUrl, parameters: nil)
+        self.listInventory(itemsEndpoint, parameters: nil)
         
         // Set Response to Table Store
         // Get the height of the status bar

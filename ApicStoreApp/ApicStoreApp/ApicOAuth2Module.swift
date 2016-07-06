@@ -134,8 +134,15 @@ public class ApicOAuth2Module: OAuth2Module {
         print("Extract Url \(url)")
         // extract the code from the URL
         //let code = self.parametersFromQueryString(url?.query)["code"]
+        
+        //IBM APIC returns the access code and other parameer after a # instead of ? 
+        // Manually convert the char here in order to query parameter in Swift
+        let origUrlStr = "\(url)"
+        let parsedUrl = origUrlStr.stringByReplacingOccurrencesOfString("#", withString: "?")
+        let finalUrl = NSURL(string: parsedUrl)
+        
         // APIC uses access token
-        let code = self.parametersFromQueryString(url?.query)["access_token"]
+        let code = self.parametersFromQueryString(finalUrl?.query)["access_token"]
         // if exists perform the exchange
         print("Extract Code \(code)")
         if (code != nil) {
