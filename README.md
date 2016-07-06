@@ -127,4 +127,5 @@ You will use the APIC CLI to do the deployment.
 2. Configure the deployment target with: ```apic config:set app=apic-app://us.apiconnect.ibmcloud.com/orgs/{bluemixOrg}-{bluemixSpace}/apps/socialreview-loopback-app```
 3. Deploy with: ```apic apps:publish```
 4. Now in the Bluemix control panel you will see both applications running:
+
 ![API Running](static/imgs/bluemix_12.png?raw=true)
