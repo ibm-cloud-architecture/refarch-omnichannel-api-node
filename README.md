@@ -49,3 +49,7 @@ environment. To install it, follow [these instructions](https://console.ng.bluem
 4. After the API Connect service is created, launch the API Connect service by clicking "Launch API Manager" ![API Info](static/imgs/bluemix_3.png?raw=true)
 5.  In the API Manager page, navigate to the API Connect Dashboard and select "Add Catalog" at the top left. You may notice that a 
 sandbox has automatically been generated for you. ![API Info](static/imgs/bluemix_4.png?raw=true)
+6. Name the catalog "ApicStore Catalog" and press "Add".![API Info](static/imgs/bluemix_5.png?raw=true)
+7. Select the catalog and then in the Settings table and the Portal sub-tab.
+8. To setup a Portal that your consumers can use to explore your API, select the IBM Developer Portal radio button. This will
+provision a portal for you. You should receive a message like the one below. ![API Info](static/imgs/bluemix_9.png?raw=true)
