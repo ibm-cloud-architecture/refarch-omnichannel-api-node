@@ -43,4 +43,4 @@ environment. To install it, follow [these instructions](https://console.ng.bluem
 
 #### Provision the API Connect Service
 
-1. Click on the Bluemix console and select API as shown in the figure below
+1. Click on the Bluemix console and select API as shown in the figure below ![API Info](static/imgs/bluemix_1.png?raw=true)
