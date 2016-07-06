@@ -10,6 +10,11 @@ The Application architecture for this application is:
 
 ![Application Architecture](static/imgs/mobile_web_arch.png?raw=true)
 
+Explained another way:
+
+![Application Architecture](static/imgs/application_overview.png?raw=true)
+
+
 ## Running The Sample Applications
 
 To run the sample applications you will need to configure your Bluemix enviroment for the API and microservices 
