@@ -47,13 +47,13 @@ This walkthrough uses the cf tool.
 
 1. Click on the Bluemix console and select API as shown in the figure below. ![API Info](static/imgs/bluemix_1.png?raw=true)
 2. Select the API Connect service as shown below. ![API Info](static/imgs/bluemix_2.png?raw=true)
-3. Select the free Essentials plan for this walkthrough.
+3. Click "Create" in the Getting Started with API Connect page. In API Connect creation page, specify the Service name anything you like or keep the default. Then select the free Essentials plan for this walkthrough.
 4. After the API Connect service is created, launch the API Connect service by clicking "Launch API Manager" ![API Info](static/imgs/bluemix_3.png?raw=true)
 5.  In the API Manager page, navigate to the API Connect Dashboard and select "Add Catalog" at the top left. You may notice that a 
 sandbox has automatically been generated for you. ![API Info](static/imgs/bluemix_4.png?raw=true)
 6. Name the catalog "ApicStore Catalog" and press "Add".![API Info](static/imgs/bluemix_5.png?raw=true)
 7. Select the catalog and then navigate to the Settings tab and click the Portal sub-tab.
-8. To setup a Developer Portal that your consumers can use to explore your API, select the IBM Developer Portal radio button. This will
+8. To setup a Developer Portal that your consumers can use to explore your API, select the IBM Developer Portal radio button. Then click the "Save" button to top right menu section. This will
 provision a portal for you. You should receive a message like the one below. ![API Info](static/imgs/bluemix_9.png?raw=true)
 9. Once the new Developer Portal has been created, you will receive an email.
 
@@ -115,20 +115,24 @@ You will use the APIC CLI to do the deployment.
 #### Deploy the LoopBack Application to Bluemix
 
 1. CD into the inventory directory in the GIT repository.
-2. Login to your Bluemix APIC environment with: ```apic login``` ( Server: us.apiconnect.ibmcloud.com, credentials: your IBM ID)
-3.  Configure the deployment target with:
+2. install all node.js dependencies 
+```npm install```
+3. Login to your Bluemix APIC environment with: ```apic login``` ( Server: us.apiconnect.ibmcloud.com, credentials: your IBM ID)
+4.  Configure the deployment target with:
 ```apic config:set app=apic-app://us.apiconnect.ibmcloud.com/orgs/{bluemixOrg}-{bluemixSpace}/apps/inventory-loopback-app```
-4. Deploy the inventory LoopBack application with: ```apic apps:publish```
-5. If you login to your Bluemix control panel you will see the new application is currently running:
+5. Deploy the inventory LoopBack application with: ```apic apps:publish```
+6. If you login to your Bluemix control panel you will see the new application is currently running:
 ![API Running](static/imgs/bluemix_11.png?raw=true)
 
 
 #### Deploy the SocialReview Application.
 
 1. CD into the socialreview folder in the GIT repository.
-2. Configure the deployment target with: ```apic config:set app=apic-app://us.apiconnect.ibmcloud.com/orgs/{bluemixOrg}-{bluemixSpace}/apps/socialreview-loopback-app```
-3. Deploy with: ```apic apps:publish```
-4. Now in the Bluemix control panel you will see both applications running:
+2. install all node.js dependencies 
+```npm install```
+3. Configure the deployment target with: ```apic config:set app=apic-app://us.apiconnect.ibmcloud.com/orgs/{bluemixOrg}-{bluemixSpace}/apps/socialreview-loopback-app```
+4. Deploy with: ```apic apps:publish```
+5. Now in the Bluemix control panel you will see both applications running:
 
 ![API Running](static/imgs/bluemix_12.png?raw=true)
 
