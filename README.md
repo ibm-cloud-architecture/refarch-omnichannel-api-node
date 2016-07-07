@@ -175,7 +175,7 @@ Update the name and host fields to a unique value. For example {Your bluemix ID}
 3. Login to your Bluemix account ```cf login```, select your Bluemix organization and space ( can be found in your User Profile in the web portal.)
 4. Deploy the app with: ```cf push```
 
-### Step 5: Subscribe to the API in the Developer Portal
+### Step 4: Subscribe to the API in the Developer Portal
 
 The Developer Portal enables API providers to build a customized developer portal for their application developers. It also provides
 the interface for API consumers to discover APIs and subscribe to a consumption plan by which the API is consumed in either the Mobile
@@ -199,7 +199,7 @@ currently available APIs. CLick on that.
 11. Subscribe to the social review API as well ( you can choose the silver or gold plan)
 12. GO back to the Apps -> MobileWeb-App-Dev page, you will see that both APIs are subscriped in your Application page.
 
-### Step 6: Run the MobileiOS Application
+### Step 5: Run the MobileiOS Application
 
 Note this section requires an Apple computer running MacOS with Apple XCode IDE installed.
 
@@ -211,7 +211,7 @@ Note this section requires an Apple computer running MacOS with Apple XCode IDE 
 
 Feel free to play around and explore the mobile inventory application.
 
-### Step 7: Run the Web Application.
+### Step 6: Run the Web Application.
 
 The consumer Web app provides the basic function to allow user to browse the  Inventory items. The sample web app is built as a Node.js application that uses Express framework and Jade templates. 
 
