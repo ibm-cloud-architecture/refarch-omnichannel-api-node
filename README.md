@@ -26,7 +26,7 @@ runtimes. Additionally you will need to configure your system to run the iOS and
 
 To provision API Connect you must have a Bluemix account. Login to your Bluemix account or register for a new account [here](https://bluemix.net/registration)
 
-Once you have logged in, create a new space for hosting the application. This application will use LoopBack for provisioning and
+Once you have logged in, create a new space for hosting the application. This application will use LoopBack framework as microservices implementation and
 the API Connect service for managing the API.
 
 #### Install the Bluemix CLI
