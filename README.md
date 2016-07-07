@@ -121,7 +121,8 @@ You will use the APIC CLI to do the deployment.
 4.  Configure the deployment target with:
 ```apic config:set app=apic-app://us.apiconnect.ibmcloud.com/orgs/{bluemixOrg}-{bluemixSpace}/apps/inventory-loopback-app```
 5. Deploy the inventory LoopBack application with: ```apic apps:publish```
-6. If you login to your Bluemix control panel you will see the new application is currently running:
+6. From the response message, note down the API target urls for the inventory app since you will need it later to update the API defination. For example: ```apiconnect-12d0327b-003f-420d-9e9e-f8ef635099d5.gangchenusibmcom-apic.apic.mybluemix.net```
+7. If you login to your Bluemix control panel you will see the new application is currently running:
 ![API Running](static/imgs/bluemix_11.png?raw=true)
 
 
@@ -132,7 +133,8 @@ You will use the APIC CLI to do the deployment.
 ```npm install```
 3. Configure the deployment target with: ```apic config:set app=apic-app://us.apiconnect.ibmcloud.com/orgs/{bluemixOrg}-{bluemixSpace}/apps/socialreview-loopback-app```
 4. Deploy with: ```apic apps:publish```
-5. Now in the Bluemix control panel you will see both applications running:
+5. From the response message, note down the API target urls for the socialreview app since you will need it later to update the API defination.
+6. Now in the Bluemix control panel you will see both applications running:
 
 ![API Running](static/imgs/bluemix_12.png?raw=true)
 
