@@ -124,6 +124,7 @@ You will use the APIC CLI to do the deployment.
 6. From the response message, note down the API target urls for the inventory app since you will need it next to update the API defination. For example: ```apiconnect-12d0327b-003f-420d-9e9e-f8ef635099d5.gangchenusibmcom-apic.apic.mybluemix.net```
 7. Open the definations/inventory.yaml file in a text editor, find the section "TARGET_HOST:", after the line "value: >-", after the https://, replace the hostname value to the urls you copied above. Save the file. (This target_host variable tells the API gateway how to connect the API to the actual microservice endpoint)
 8.If you login to your Bluemix control panel you will see the new application is currently running:
+
 ![API Running](static/imgs/bluemix_11.png?raw=true)
 
 
@@ -151,7 +152,7 @@ Logon to Bluemix API manager console, navigate to Dashboard. Click the â€œlinkâ€
 ![API Running](static/imgs/bluemix_13.png?raw=true)
 
 
-1. CD Into the inventory directory in the GIT repository.
+1. cd Into the inventory directory in the GIT repository.
 2. Set the API publishing endpoint by copying and pasting the catalog endpoint you obtained earlier. It should look something like this:
 ```
 apic config:set catalog=apic-catalog://us.apiconnect.ibmcloud.com/orgs/gangchenusibm.com-apic/catalogs/apicstore-catalog
@@ -160,7 +161,7 @@ apic config:set catalog=apic-catalog://us.apiconnect.ibmcloud.com/orgs/gangchenu
 4. Now publish the socialreview APIs, start by CD'ing to the socialreview directory.
 5. Set the API publishing endpoint by copying the catalog information again. A sample: ``` $ apic config:set catalog=apic-catalog://us.apiconnect.ibmcloud.com/orgs/gangchenusibm.com-apic/catalogs/apicstore-catalog```
 6. Publish the socialreviews API product with ```apic publish definitions/socialreviews-product.yaml```
-7. Now launch the Bluemix API management console by navigating to "Dashboard" from the top navigation pane. Click "ApicStore Catalog",
+7. Now launch the Bluemix API management console and navigating to "Dashboard" from the top navigation pane. Click "ApicStore Catalog",
 you should see both Inventory and SocialReviews products in the state of Published in Bluemix.
 ![API Running](static/imgs/bluemix_14.png?raw=true)
 
