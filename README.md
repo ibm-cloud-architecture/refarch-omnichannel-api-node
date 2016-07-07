@@ -33,6 +33,7 @@ the API Connect service for managing the API.
 
 In order to complete the rest of this tutorial, many commands will require the Bluemix CLI toolkit to be installed on your local
 environment. To install it, follow [these instructions](https://console.ng.bluemix.net/docs/cli/index.html#cli)
+
 This walkthrough uses the cf tool.
 
 #### Create a New Space in Bluemix
