@@ -165,8 +165,8 @@ apic config:set catalog=apic-catalog://us.apiconnect.ibmcloud.com/orgs/gangchenu
 you should see both Inventory and SocialReviews products in the state of Published in Bluemix.
 ![API Running](static/imgs/bluemix_14.png?raw=true)
 
-In the sample application, the API Connect OAuth provider relies on a dummy authenticating application to validate user credentials.
-You have deployed a sample application and configured it already. If you would like to deploy your own authentication servivces follow this 
+(**Optional**) In the sample application, the API Connect OAuth provider relies on a dummy authenticating application to validate user credentials.
+We have deployed the authentication application and configured the OAuth provider already. If you would like to deploy your own authentication servivces follow this 
 section. Otherwiswe move to step 5.
 
 1. Update the Cloud Foundry definition file locted under the repositories' OAuth/authentication-app/ folder ( manifest.yml ).
@@ -177,11 +177,11 @@ Update the name and host fields to a unique value. For example {Your bluemix ID}
 
 ### Step 4: Subscribe to the API in the Developer Portal
 
-The Developer Portal enables API providers to build a customized developer portal for their application developers. It also provides
+The Developer Portal enables API providers to build a customized consumer portal for their application developers. It also provides
 the interface for API consumers to discover APIs and subscribe to a consumption plan by which the API is consumed in either the Mobile
 or traditional Web application.
 
-1. Open the API Connect Developer Portal. You will need to open your Portal URL. Obtain it by navigating to the ApicStore catalog. Click "Settings", then "Portal".
+1. Open the API Connect Developer Portal. You will need to open your Portal URL. Obtain it by navigating to the ApicStore catalog from the Bluemix API manager console. Click "Settings", then "Portal".
 ![API Running](static/imgs/bluemix_15.png?raw=true)
 2. Open the API Connnect Portal in another browser window. You should see the portal home page with both the inventory and the socialreviews APIs highlighted.
 3. Click "Create an account" from the upper right menu bar.
@@ -193,21 +193,25 @@ or traditional Web application.
 ![API Running](static/imgs/bluemix_17.png?raw=true) ( Store the client ID, you will need it later)
 8. In the developer portal, navigate to Apps -> MobileWeb-App-Dev. Below the application, you will see a link to take you to the 
 currently available APIs. CLick on that.
-9. Click on the Inventory ( 1.0.0 ) API.
+9. Click on the Inventory ( V1.0.0 ) API.
 10. Click "Subscribe" in the API page.
 ![API Running](static/imgs/bluemix_18.png?raw=true)
 11. Subscribe to the social review API as well ( you can choose the silver or gold plan)
-12. GO back to the Apps -> MobileWeb-App-Dev page, you will see that both APIs are subscriped in your Application page.
+12. Go back to the Apps -> MobileWeb-App-Dev page, you will see that both APIs are subscriped in your Application page.
 
 ### Step 5: Run the MobileiOS Application
 
-Note this section requires an Apple computer running MacOS with Apple XCode IDE installed.
+Note this section requires an Apple computer running MacOS with Apple Xcode IDE installed.
 
 1. In Finder, navigate to the folder ApicStoreApp in the GIT repository.
-2. Double click the "ApicStoreApp.xcodeproj" file to open the iOS project in XCode.
-3. You need to specify the API endpoint configuration for your Bluemix API Connect deployment.  Edit the ApiStoreApp / Supporting Files / Config.plist file. The Config.plist file contains all of the API endpoint URLs as well as the clientId registered earlier in Developer Portal. Any changes to the API endpoint urls can be made in this file. 
+2. Double click the "ApicStoreApp.xcodeproj" file to open the iOS project in Xcode.
+3. You need to specify the API endpoint configuration for your Bluemix API Connect deployment.  Edit the ApiStoreApp / Supporting Files / Config.plist file. The Config.plist file contains all of the API endpoint URLs as well as the clientId registered earlier in Developer Portal. 
 ![API Running](static/imgs/bluemix_19.png?raw=true)
-4. Click the "Play" button in the upper left corner to run the application in a simulated iPhone ( be sure to select iphone6 or 6plus)
+4. Click the "Play" button in the upper left corner to run the application in a simulated iPhone ( be sure to select iphone6 or 6plus).
+5. The application will display a list of items returned from the inventory API. Click on one of them to see the detail of an item.
+6. In detail page, you should see item detail as well as existing review comments. Click the "Add Review" Button at lower left corner, this will trigger the OAuth flow.
+7. In the OAuth login screen, enter "foo" as username and "bar" as password. Upon successful login, grant the access to the Mobile app.
+8. Click Open back in ApicStore app, here you can add a review comment. Click Add will navigate you back to the item detail page where you should see your comment posted.
 
 Feel free to play around and explore the mobile inventory application.
 
