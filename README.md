@@ -10,10 +10,7 @@ The Application architecture for this application is:
 
 ![Application Architecture](static/imgs/mobile_web_arch.png?raw=true)
 
-Explained another way:
-
-![Application Architecture](static/imgs/application_overview.png?raw=true)
-
+The reference implementation uses Loopback as Node.js framework and run as a Bluemix Clound Foundry app. For simplicity, the data store is implemented as a Loopback in-memory DB.
 
 ## Running The Sample Applications
 
