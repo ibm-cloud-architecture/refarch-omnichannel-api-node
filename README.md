@@ -203,6 +203,7 @@ Note this section requires an Apple computer running MacOS with Apple Xcode IDE 
 1. In Finder, navigate to the folder ApicStoreApp in the GIT repository.
 2. Double click the "ApicStoreApp.xcodeproj" file to open the iOS project in Xcode.
 3. You need to specify the API endpoint configuration for your Bluemix API Connect deployment.  Edit the ApiStoreApp / Supporting Files / Config.plist file. The Config.plist file contains all of the API endpoint URLs as well as the clientId registered earlier in Developer Portal. 
+
 ![API Running](static/imgs/bluemix_19.png?raw=true)
 
 	The following is a description of the endpoints and constants in the Config.plist file:
