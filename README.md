@@ -206,11 +206,11 @@ Note this section requires an Apple computer running MacOS with Apple Xcode IDE 
 
 ![API Running](static/imgs/bluemix_19.png?raw=true)
 
-	The following is a description of the endpoints and constants in the Config.plist file:
-	  * oAuthRedirectUrl: This is the oAuth Redirect API defined in the earlier section. It should be org.apic://example.com
-	  * clientId: This is the client Id that is obtained in the Developer Portal in the earlier section.
-	  * ItemRestUrl, reviewRestUrl, oAuthBaseURl: These are the API endpoints from Developer Portal for Inventory API, review API, and OAuth API. In this case, the base URL host for all of these are the same, but in the code the URIs will be different for each call.
-	  * oAuthRestUrl: This is the endpoint to trigger the OAuth flow for socialreview API. The base URL is the same as above. 
+  The following is a description of the endpoints and constants in the Config.plist file:
+    * oAuthRedirectUrl: This is the oAuth Redirect API defined in the earlier section. It should be org.apic://example.com
+    * clientId: This is the client Id that is obtained in the Developer Portal in the earlier section.
+    * ItemRestUrl, reviewRestUrl, oAuthBaseURl: These are the API endpoints from Developer Portal for Inventory API, review API, and OAuth API. In this case, the base URL host for all of these are the same, but in the code the URIs will be different for each call.
+    * oAuthRestUrl: This is the endpoint to trigger the OAuth flow for socialreview API. The base URL is the same as above. 
 
 	The 4 endpoints should all be the same and is actually your apic-catalog endpoint. For example:
 	https://api.us.apiconnect.ibmcloud.com/gangchenusibmcom-apic/apicstore-catalog
