@@ -203,8 +203,7 @@ Note this section requires an Apple computer running MacOS with Apple Xcode IDE 
 1. In Finder, navigate to the folder ApicStoreApp in the GIT repository.
 2. Double click the "ApicStoreApp.xcodeproj" file to open the iOS project in Xcode.
 3. You need to specify the API endpoint configuration for your Bluemix API Connect deployment.  Edit the ApiStoreApp / Supporting Files / Config.plist file. The Config.plist file contains all of the API endpoint URLs as well as the clientId registered earlier in Developer Portal.
-
-![API Running](static/imgs/bluemix_19.png?raw=true)
+  ![API Running](static/imgs/bluemix_19.png?raw=true)
 
   The following is a description of the endpoints and constants in the Config.plist file:
     * oAuthRedirectUrl: This is the oAuth Redirect API defined in the earlier section. It should be org.apic://example.com
@@ -212,9 +211,9 @@ Note this section requires an Apple computer running MacOS with Apple Xcode IDE 
     * ItemRestUrl, reviewRestUrl, oAuthBaseURl: These are the API endpoints from Developer Portal for Inventory API, review API, and OAuth API. In this case, the base URL host for all of these are the same, but in the code the URIs will be different for each call.
     * oAuthRestUrl: This is the endpoint to trigger the OAuth flow for socialreview API. The base URL is the same as above. 
 
-	The 4 endpoints should all be the same and is actually your apic-catalog endpoint. For example:
-	https://api.us.apiconnect.ibmcloud.com/gangchenusibmcom-apic/apicstore-catalog
-
+    The 4 endpoints should all be the same and is actually your apic-catalog endpoint. For example:
+    https://api.us.apiconnect.ibmcloud.com/gangchenusibmcom-apic/apicstore-catalog
+ 
 4. Click the "Play" button in the upper left corner to run the application in a simulated iPhone ( be sure to select iphone6 or 6plus).
 5. The application will display a list of items returned from the inventory API. Click on one of them to see the detail of an item.
 6. In detail page, you should see item detail as well as existing review comments. Click the "Add Review" Button at lower left corner, this will trigger the OAuth flow.
