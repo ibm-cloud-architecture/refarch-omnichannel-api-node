@@ -45,8 +45,8 @@ This walkthrough uses the cf tool.
 1. Click on the Bluemix console and select API as shown in the figure below. ![API Info](static/imgs/bluemix_1.png?raw=true)
 2. Select the API Connect service as shown below. ![API Info](static/imgs/bluemix_2.png?raw=true)
 3. Click "Create" in the Getting Started with API Connect page. In API Connect creation page, specify the Service name anything you like or keep the default. Then select the free Essentials plan for this walkthrough.
-4. After the API Connect service is created, launch the API Connect service by clicking "Launch API Manager" ![API Info](static/imgs/bluemix_3.png?raw=true)
-5.  In the API Manager page, navigate to the API Connect Dashboard and select "Add Catalog" at the top left. You may notice that a 
+4. After the API Connect service is created, click on the Menu icon (the second from the left, to the right of the Home icon) and select "Dashboard" from the pull-down menu.
+5. In the Dashboard page, select the "+Add" button in the upper-left and select "Catalog" from the pull-down menu. You may notice that a
 sandbox has automatically been generated for you. ![API Info](static/imgs/bluemix_4.png?raw=true)
 6. Name the catalog "ApicStore Catalog" and press "Add".![API Info](static/imgs/bluemix_5.png?raw=true)
 7. Select the catalog and then navigate to the Settings tab and click the Portal sub-tab.
