@@ -81,7 +81,10 @@ First clone the GIT repository locally:
 ```
 git clone git@github.com:ibm-solution-engineering/refarch-omnichannel-api-node.git
 ```
+If this fails with an error "Permission denied (publickey).
+fatal: Could not read from remote repository."
 
+Follow these instructions https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/
 
 There are 5 main folders inside this repository:
 
